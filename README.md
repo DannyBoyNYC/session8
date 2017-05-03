@@ -52,24 +52,6 @@ header p + p {
 }
 ```
 
-## SASS
-
-[Syntactically Awesome Style Sheets](https://sass-lang.com) - takes sass files and converts (compiles) them into css. sass [adds features](http://sass-lang.com/guide) to css.
-
-
-### Free Options
-(Note - on OSX you may need to right click and choose open rather than double click in order to run these.)
-
-[Koala](http://koala-app.coms)
-[Scout app](https://github.com/scout-app/scout-app/)
-
-For Scout the setup includes creating and input folder for sass and an output folder for css.
-
-Save base.css to sass/imports/_header.scss
-Save reset.css to sass/imports/_reset.scss
-
-Create styles.scss and import both the above.
-
 
 ### Nesting
 
