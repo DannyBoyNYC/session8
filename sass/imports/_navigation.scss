@@ -1,8 +1,6 @@
 // _navigation.scss
 
 nav {
-
-
 		ul {
 		// display: none;
 		transform: translateY(-200px);
@@ -17,6 +15,7 @@ nav {
 			text-align: center;
 			transform: translateY(0);
 			max-height: 1000px;
+			opacity: 1;
 		}
 		a {
 			@media (min-width: $break-sm){

@@ -94,7 +94,8 @@ nav ul {
       background: #4e7c92;
       text-align: center;
       transform: translateY(0);
-      max-height: 1000px; } }
+      max-height: 1000px;
+      opacity: 1; } }
   @media (min-width: 480px) {
     nav ul a {
       color: #fff; } }
