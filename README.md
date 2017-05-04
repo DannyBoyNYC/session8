@@ -6,7 +6,7 @@ Start on your final projects. There are very few requirements for this project o
 
 It is not required that you prepare a specific number of pages. Depending on the design goals, one good template could suffice for many pages and it is possible to spend as much time on a single page as on an entire site.
 
-Making the page "mobile friendly" is optional but you should, at the very least, include some basic allowances for smart phones and tablets.
+Making the page "mobile friendly" is required as is at least one instance on DOM scripting.
 
 
 ![image](wide.png)
@@ -14,6 +14,16 @@ Making the page "mobile friendly" is optional but you should, at the very least,
 
 
 ## Tooling
+
+petershift 
+Windows users for browser sync you must \" the ' package.json file so
+
+"scripts": {
+   "start": "browser-sync start --browser \"chrome\" --server \"app\" --files \"app\"",
+   "startUp": "browser-sync start --browser \"chrome\" --server \"definition-list\" --files \"definition-list\""
+ },
+
+notice also 'google chrome' becomes 'chrome' on windows
 
 ```
 $ cd <session8>
