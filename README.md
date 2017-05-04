@@ -2,6 +2,13 @@
 
 ## Homework
 
+Start on your final projects. There are very few requirements for this project other than it must be a web page or series of web pages that incorporate the concepts and techniques covered in class.
+
+It is not required that you prepare a specific number of pages. Depending on the design goals, one good template could suffice for many pages and it is possible to spend as much time on a single page as on an entire site.
+
+Making the page "mobile friendly" is optional but you should, at the very least, include some basic allowances for smart phones and tablets.
+
+
 ![image](wide.png)
 ![image](mobile.png)
 
@@ -9,8 +16,16 @@
 ## Tooling
 
 ```
-$ cd <session7>
+$ cd <session8>
 $ npm install
+```
+
+```
+npm install build-error-notifier --save-dev
+```
+
+```
+"sassy": "node-sass --watch sass --output app/css --source-map true 2>&1 | build-error-notifier",
 ```
 
 `$ npm run boom!`
@@ -63,13 +78,6 @@ iframe {
 }
 ```
 
-```
-header {
-	max-width: $max-width;
-	margin: 0 auto;
-}
-```
-
 _base.scss:
 
 ```
@@ -92,19 +100,21 @@ h3, h4 {
 
 ```
 
+```
+header {
+	max-width: $max-width;
+	margin: 0 auto;
+```
+
 ## Columns for Content
 
-Examine the DOM.
+Examine the differences between index.html and alt-index.html.
 
-Replaced content divs with section tags. 
-
-Replaced content-main divs with article tags
-
-Replaced content-sub divs with aside tags.
-
-Replaced footer div with footer tag.
-
-Replaced content-sub div with nav tag.
+* Replaced content divs with section tags. 
+* Replaced content-main divs with article tags
+* Replaced content-sub divs with aside tags.
+* Replaced footer div with footer tag.
+* Replaced content-sub div with nav tag.
 
 ### Demo
 
@@ -228,9 +238,6 @@ footer {
 		max-width: $max-width;
 		margin: 0 auto;
 		color: #fff;
-		p, ul, .vcard {
-
-		}
 		a {
 			color: #fff;
 		}
@@ -249,8 +256,8 @@ Format the video buttons
 	padding: 6px;
 	display: flex;
 	li {
-		margin-right:1.5rem;
-		margin-bottom:1rem;
+		margin-right: 18px;
+		margin-bottom: 16px;
 	}
 	.active {
 		border-radius: $radius;
@@ -305,7 +312,7 @@ function selectVideo(){
 }
 ```
 
-Add the iFrame variable and set its src attribute:
+Add the iFrame variable `const iFrame = document.querySelector('iframe')` and set its src attribute `iFrame.setAttribute('src', videoToPlay)`:
 
 ```
 const iFrame = document.querySelector('iframe')
@@ -321,7 +328,7 @@ function selectVideo(){
 }
 ```
 
-Switch the active class:s
+Switch the active class:
 
 ```
 const iFrame = document.querySelector('iframe')
@@ -380,40 +387,9 @@ in _navsub.scss:
 
 Note the `>` [selector](https://www.w3schools.com/cssref/css_selectors.asp). Also see [Combinators](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors)
 
-Accordion for Nav Sub. 
-
-Old school JavaScript:
-
-```js
-$('.nav-sub>li a').on('click tap', function(){
-	$('.nav-sub ul').slideUp();
-	$(this).next().slideToggle();
-	console.log(this);
-	return false;
-});
-```
-
-ES6 JavaScript:
-
-```
-const subnavLinks = document.querySelectorAll('.nav-sub > li a')
-console.log(subnavLinks)
-const subnavLinksArray = [...subnavLinks]
-subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
-
-function openAccordion(){
-	console.log(this)
-	event.preventDefault()
-}
-```
-
-[DOM Traversal](https://www.w3schools.com/jsref/dom_obj_document.asp)
-
-nextElementSibling, nextSibling, previousSibling, childNodes, firstChild ...
-
 Add class `.active {display: block !important}` to _nav-sub.scss:
 
-```
+```css
 .nav-sub {
 	padding: 10px 20px;
 	background-color: $lt-yellow;
@@ -442,6 +418,37 @@ Add class `.active {display: block !important}` to _nav-sub.scss:
 }
 
 ```
+
+Accordion for Nav Sub. 
+
+Old school JavaScript:
+
+```js
+$('.nav-sub>li a').on('click tap', function(){
+	$('.nav-sub ul').slideUp();
+	$(this).next().slideToggle();
+	console.log(this);
+	return false;
+});
+```
+
+ES6 JavaScript. 
+
+```
+const subnavLinks = document.querySelectorAll('.nav-sub > li a')
+console.log(subnavLinks)
+const subnavLinksArray = [...subnavLinks]
+subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
+
+function openAccordion(){
+	console.log(this)
+	event.preventDefault()
+}
+```
+
+[DOM Traversal](https://www.w3schools.com/jsref/dom_obj_document.asp)
+
+nextElementSibling, nextSibling, previousSibling, childNodes, firstChild ...
 
 ```
 const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
@@ -472,6 +479,8 @@ function removeActiveClass(){
 }
 ```
 
+Important - we have broken the removeActiveClass() function for the video switcher.
+
 Set the initial state of the accordion with: `subnavLinksArray[0].nextElementSibling.classList.add('active')`
 
 ```
@@ -491,10 +500,22 @@ function removeActiveClass(){
 }
 ```
 
+and remove the css created earlier:
+
+```
+	// li:first-child ul {
+	// 	display:block;
+	// }
+```
+
+Note the refresh behaviour.
+
 Note the lack of animation.
 
 
 ### Image Carousel 
+
+Do a DOM review of this section of the page.
 
 In _carousel.scss:
 
@@ -511,8 +532,7 @@ In _carousel.scss:
 			width: 80px;
 			padding: 10px;
 			background-color: #fff;
-			border: 1px solid #bfbfbf;
-			border-bottom-color: #7c7c7a;
+			border: 1px solid $lt-yellow;
 			transition: all 0.2s linear;
 			&:hover {
 				transform: scale(1.1);
@@ -523,7 +543,7 @@ In _carousel.scss:
 }
 ```
 
-Note color & scale transition
+Note transition:
 
 ```css
 li img {
@@ -566,6 +586,8 @@ change the # links to point to high res images:
   </li>
 ```
 
+Old school JavaScript:
+
 ```js
 $('.image-tn a').on('click tap', function(){
     var imgsrc = $(this).attr('href');
@@ -579,7 +601,7 @@ $('.image-tn a').on('click tap', function(){
 ```
 const carouselLinks = document.querySelectorAll('.image-tn a')
 const carouselLinksArray = [...carouselLinks]
-const carousel = document.querySelector('.content-slider img')
+const carousel = document.querySelector('figure img')
 
 carouselLinksArray.forEach( carouselLink => carouselLink.addEventListener('click', runCarousel ))
 
@@ -604,7 +626,7 @@ function runCarousel(){
 }
 ```
 
-Create a pointer to the figcation in order to manipulate its content:
+Create a pointer to the figcaption in order to manipulate its content:
 
 ```
 const carouselPara = document.querySelector('figcaption')
@@ -645,17 +667,9 @@ function runCarousel(){
 
 ### The Panels (the third and final section)
 
-Review the design. 
+Review the design. Let's try floats and absolute/relative positioning.
 
 In _panels.scss:
-
-```css
-h2 + h3 {
-	margin-bottom: 7px;
-}
-```
-
-Let's try floats and positioning.
 
 ```css
 .hentry {
@@ -679,7 +693,7 @@ The little date area
 		top: 250px;
 		left: 1rem;
 		display: block;
-		width: 50px;
+		width: 30px;
 		padding: 5px 10px;
 		background-color: $link;
 		font-size: 10px;
@@ -688,7 +702,7 @@ The little date area
 		color: #fff;
 	}
 	.day {
-		font-size: 20px;
+		font-size: 32px;
 	}
 	h4 {
 		margin: 0 0 10px 60px;
@@ -702,11 +716,14 @@ The little date area
 
 Parent container .hentries is used here.
 
-```
+Adding abbr formatting, removing positioning and using flexbox and floats.
+
+```css
 .hentries {
 	display: flex;
 	abbr {
 		text-decoration: none;
+		text-align: center;
 	}
 	.hentry {
 		float: left;
@@ -715,7 +732,7 @@ Parent container .hentries is used here.
 		padding: 1rem;
 		.published {
 			float: left;
-			width: 27%;
+			width: 24%;
 			box-sizing: border-box;
 		// position: absolute;
 		// top: 250px;
@@ -750,12 +767,6 @@ Parent container .hentries is used here.
 Final _panels.scss:
 
 ```
-.hentry {
-	position: relative;
-	float: left;
-	width: 50%;
-}
-
 .hentries {
 	display: flex;
 	abbr {
@@ -765,13 +776,14 @@ Final _panels.scss:
 		float: left;
 		box-sizing: border-box;
 		width: 50%;
-		padding: 1rem;
+		padding: 0 8px;
 		.published {
+			text-align: center;
 			float: left;
-			width: 27%;
+			width: 24%;
 			box-sizing: border-box;
 			display: block;
-			padding: 5px 10px;
+			padding: 2px 6px;
 			background-color: $link;
 			font-size: 10px;
 			text-align: center;
