@@ -850,6 +850,8 @@ html {
 }
 ```
 
+https://www.sitepoint.com/smooth-scrolling-vanilla-javascript/
+
 ```
 initSmoothScrolling();
 
