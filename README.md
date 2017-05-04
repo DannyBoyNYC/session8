@@ -41,18 +41,16 @@ npm install build-error-notifier --save-dev
 `$ npm run boom!`
 
 
+Review: 
 
-Review: Media Query - Mobile First
+* Media Query - Mobile First
+* Variables
+* Responsive Main Nav
+* Show/Hide Nav JS
+* Animation with CSS
+* Variables
 
-Review: Variables
-
-Review: Responsive Main Nav
-
-Review: Show/Hide Nav JS
-
-Review: Animation with CSS
-
-Review variables. Add new variables:
+Add new variables:
 
 ```
 $max-width: 940px;
@@ -120,11 +118,12 @@ header {
 
 Examine the differences between index.html and alt-index.html.
 
-* Replaced content divs with section tags. 
+* Replaced content divs with section tags
 * Replaced content-main divs with article tags
-* Replaced content-sub divs with aside tags.
-* Replaced footer div with footer tag.
-* Replaced content-sub div with nav tag.
+* Replaced content-sub divs with aside tags
+* Replaced footer div with footer tag
+* Replaced content-sub div with nav tag
+* Added links to sections of the document using ids
 
 ### Demo
 
@@ -837,8 +836,162 @@ a[rel="alternate"] {
 
 
 
-
 ## Notes
+
+### Links
+
+`<li><a href="#two">Summary</a></li>`
+
+`<div class="secondary" id="two">`
+
+```
+html {
+  scroll-behavior: smooth;
+}
+```
+
+```
+initSmoothScrolling();
+
+function initSmoothScrolling() {
+  if (isCssSmoothSCrollSupported()) {
+    return;
+  }
+
+  var duration = 400;
+
+  var pageUrl = location.hash ?
+    stripHash(location.href) :
+    location.href;
+
+  delegatedLinkHijacking();
+  //directLinkHijacking();
+
+  function delegatedLinkHijacking() {
+    document.body.addEventListener('click', onClick, false);
+
+    function onClick(e) {
+      if (!isInPageLink(e.target))
+        return;
+
+      e.stopPropagation();
+      e.preventDefault();
+
+      jump(e.target.hash, {
+        duration: duration,
+        callback: function() {
+          setFocus(e.target.hash);
+        }
+      });
+    }
+  }
+
+  function directLinkHijacking() {
+    [].slice.call(document.querySelectorAll('a'))
+      .filter(isInPageLink)
+      .forEach(function(a) {
+        a.addEventListener('click', onClick, false);
+      });
+
+    function onClick(e) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      jump(e.target.hash, {
+        duration: duration,
+      });
+    }
+
+  }
+
+  function isInPageLink(n) {
+    return n.tagName.toLowerCase() === 'a' &&
+      n.hash.length > 0 &&
+      stripHash(n.href) === pageUrl;
+  }
+
+  function stripHash(url) {
+    return url.slice(0, url.lastIndexOf('#'));
+  }
+
+  function isCssSmoothSCrollSupported() {
+    return 'scrollBehavior' in document.documentElement.style;
+  }
+
+  // Adapted from:
+  // https://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/
+  function setFocus(hash) {
+    var element = document.getElementById(hash.substring(1));
+
+    if (element) {
+      if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
+        element.tabIndex = -1;
+      }
+
+      element.focus();
+    }
+  }
+
+}
+
+function jump(target, options) {
+  var
+    start = window.pageYOffset,
+    opt = {
+      duration: options.duration,
+      offset: options.offset || 0,
+      callback: options.callback,
+      easing: options.easing || easeInOutQuad
+    },
+    distance = typeof target === 'string' ?
+    opt.offset + document.querySelector(target).getBoundingClientRect().top :
+    target,
+    duration = typeof opt.duration === 'function' ?
+    opt.duration(distance) :
+    opt.duration,
+    timeStart, timeElapsed;
+
+  requestAnimationFrame(function(time) {
+    timeStart = time;
+    loop(time);
+  });
+
+  function loop(time) {
+    timeElapsed = time - timeStart;
+
+    window.scrollTo(0, opt.easing(timeElapsed, start, distance, duration));
+
+    if (timeElapsed < duration)
+      requestAnimationFrame(loop)
+    else
+      end();
+  }
+
+  function end() {
+    window.scrollTo(0, start + distance);
+
+    if (typeof opt.callback === 'function')
+      opt.callback();
+  }
+
+  // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
+  function easeInOutQuad(t, b, c, d) {
+    t /= d / 2
+    if (t < 1) return c / 2 * t * t + b
+    t--
+    return -c / 2 * (t * (t - 2) - 1) + b
+  }
+
+}
+
+
+
+
+
+
+```
+
+
 
 Additional Tweaks for Mobile (need to test on phone)
 
@@ -895,6 +1048,10 @@ media queries for transform effects (on hover)
 	}
 }
 ```
+
+
+
+
 
 
 
