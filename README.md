@@ -86,7 +86,7 @@ iframe {
 }
 ```
 
-_base.scss:
+Also add some basic styling to _base.scss:
 
 ```
 p {
@@ -105,14 +105,9 @@ h3, h4 {
 	line-height: 1.25;
 	margin-bottom: 20px;
 }
-
 ```
 
-```
-header {
-	max-width: $max-width;
-	margin: 0 auto;
-```
+
 
 ## Columns for Content
 
@@ -123,7 +118,7 @@ Examine the differences between index.html and alt-index.html.
 * Replaced content-sub divs with aside tags
 * Replaced footer div with footer tag
 * Replaced content-sub div with nav tag
-* Added links to sections of the document using ids
+* Added links to sections of the document using [ids](http://demo.tutorialzine.com/2015/02/single-page-app-without-a-framework/#)
 
 ### Demo
 

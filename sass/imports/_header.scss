@@ -1,6 +1,8 @@
 /* header scss */
 
 header {
+	max-width: $max-width;
+	margin: 0 auto;
 	h1 {
 		font-size: 3rem;
 	}
