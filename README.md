@@ -29,6 +29,26 @@ Review: Show/Hide Nav JS
 
 Review: Animation with CSS
 
+Review variables. Add new variables:
+
+```
+$max-width: 940px;
+
+$break-sm: 480px;
+$break-med: 768px;
+
+$radius: 4px;
+
+$link: #4e7c92;
+$hover: #df3030;
+$text: #333;
+
+$med-gray: #666;
+$light-gray: #ddd;
+$dk-yellow: #dbd1b5;
+$lt-yellow: #f8f7f3;
+```
+
 
 ### Responsive Images
 
@@ -132,17 +152,6 @@ Apply the second breakpoint variable to medium screen sizes and above only:
 }
 ```
 
-Apply box sizing to all elements:
-
-```
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-html {
-  box-sizing: border-box;
-}
-```
-
 ### The Secondary div
 
 ```css
@@ -172,7 +181,12 @@ Add the clearfix to the section and secondary div:
 
 `<div class="secondary clearfix">`
 
+
 ### A Simple CSS Grid
+
+Remove the alterations to the html.
+
+Delete/comment everything from _structure.scss except the .secondary rule.
 
 ```css
 section {
@@ -185,11 +199,11 @@ section {
 
 ```css
 section {
-	display: grid;
-	grid-template-columns: 100%;
 	max-width: $max-width;
 	margin: 0 24px;
 	margin-bottom: 24px; 
+	display: grid;
+	grid-template-columns: 100%;
 	@media(min-width: $break-med){
 		margin: 0 auto;
 		margin-bottom: 24px;
@@ -200,6 +214,8 @@ section {
 ```
 
 ### The Footer 
+
+in _footer.scss:
 
 ```css
 footer {
@@ -226,6 +242,27 @@ footer {
 
 ### Video Switcher - JavaScript
 
+Active class
+
+Format the video buttons
+
+```css
+.btn-list {
+	padding: 6px;
+	display: flex;
+	li {
+		margin-right:1.5rem;
+		margin-bottom:1rem;
+	}
+	.active {
+		border-radius: $radius;
+		background: $link;
+		color: #fff;
+		padding: 0.5rem;
+	}
+}
+```
+
 The old school JavaScript
 
 ```
@@ -239,6 +276,16 @@ $('.content-video a').on('click',function(){
  });
 ```
 
+Create variables and spread the links into an array.
+
+```
+const videoLinks = document.querySelectorAll('.content-video a')
+const videoLinksArray = [...videoLinks]
+videoLinksArray.forEach( videoLink => videoLink.addEventListener('click', selectVideo ))
+```
+
+Add a function:
+
 ```
 const videoLinks = document.querySelectorAll('.content-video a')
 const videoLinksArray = [...videoLinks]
@@ -250,6 +297,8 @@ function selectVideo(){
 }
 ```
 
+Examine the nodelist and arry variables in the console.
+
 ```
 function selectVideo(){
 	const videoToPlay = this.getAttribute('href')
@@ -258,7 +307,7 @@ function selectVideo(){
 }
 ```
 
-Add the iFrame
+Add the iFrame variable and set its src attribute:
 
 ```
 const iFrame = document.querySelector('iframe')
@@ -274,25 +323,7 @@ function selectVideo(){
 }
 ```
 
-Active class
-
-Format the video buttons
-
-```css
-.btn-list {
-	padding: 6px;
-	display: flex;
-	li {
-		margin-right:1.5rem;
-		margin-bottom:1rem;
-	}
-	.active { 
-		background: #87a3af;
-		color: #fff;
-		padding: 0.5rem;
-	}
-}
-```
+Switch the active class:s
 
 ```
 const iFrame = document.querySelector('iframe')
@@ -305,7 +336,6 @@ function selectVideo(){
 	this.classList.add('active')
 	const videoToPlay = this.getAttribute('href')
 	iFrame.setAttribute('src', videoToPlay)
-	console.log(iFrame)
 	event.preventDefault()
 }
 
@@ -316,15 +346,15 @@ function removeActiveClass(){
 
 
 
-
-
 ### Nav Sub
 
 Integrate the JavaScript for nav-sub into the layout.
 
+in _navsub.scss:
+
 ```css
 .nav-sub {
-	padding: 20px;
+	padding: 10px 20px;
 	background-color: $lt-yellow;
 	border: 1px solid $dk-yellow;
 	@media (min-width: $break-med){
@@ -334,9 +364,6 @@ Integrate the JavaScript for nav-sub into the layout.
 		margin: 0;
 		float: none;
 		width: auto;
-	}
-	li { 
-		margin:6px 0;
 	}
 	ul {
 		display:none;
@@ -353,7 +380,11 @@ Integrate the JavaScript for nav-sub into the layout.
 }
 ```
 
-Accordion for Nav Sub
+Note the `>` [selector](https://www.w3schools.com/cssref/css_selectors.asp). Also see [Combinators](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors)
+
+Accordion for Nav Sub. 
+
+Old school JavaScript:
 
 ```js
 $('.nav-sub>li a').on('click tap', function(){
@@ -364,21 +395,10 @@ $('.nav-sub>li a').on('click tap', function(){
 });
 ```
 
+ES6 JavaScript:
+
 ```
 const subnavLinks = document.querySelectorAll('.nav-sub > li a')
-const subnavLinksArray = [...subnavLinks]
-subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
-
-function openAccordion(){
-	console.log(this)
-	event.preventDefault()
-}
-```
-
-Refine the selector (see [Combinators](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors))
-
-```
-const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
 console.log(subnavLinks)
 const subnavLinksArray = [...subnavLinks]
 subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
@@ -393,9 +413,40 @@ function openAccordion(){
 
 nextElementSibling, nextSibling, previousSibling, childNodes, firstChild ...
 
+Add class `.active {display: block !important}` to _nav-sub.scss:
+
+```
+.nav-sub {
+	padding: 10px 20px;
+	background-color: $lt-yellow;
+	border: 1px solid $dk-yellow;
+	@media (min-width: $break-med){
+		width: 40%;
+		float: right;
+		border-radius: $radius;
+		margin: 0;
+		float: none;
+		width: auto;
+	}
+	ul {
+		display:none;
+	}
+	li:first-child ul {
+		display:block;
+	}
+	> li > a { 
+		font-weight:bold; 
+	}
+	ul li {
+		padding-left:12px;
+	}
+	.active {display: block !important}
+}
+
+```
+
 ```
 const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
-console.log(subnavLinks)
 const subnavLinksArray = [...subnavLinks]
 subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
 
@@ -405,13 +456,10 @@ function openAccordion(){
 }
 ```
 
-Idea - use `.nav-sub > li` as a selector for subnavLinks
-
-Remove the active class
+Remove the active class from the DOM before applying with `removeActiveClass()`:
 
 ```
 const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
-console.log(subnavLinks)
 const subnavLinksArray = [...subnavLinks]
 subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
 
@@ -426,7 +474,31 @@ function removeActiveClass(){
 }
 ```
 
-### Small Images
+Set the initial state of the accordion with: `subnavLinksArray[0].nextElementSibling.classList.add('active')`
+
+```
+const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
+const subnavLinksArray = [...subnavLinks]
+subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
+subnavLinksArray[0].nextElementSibling.classList.add('active')
+
+function openAccordion(){
+	removeActiveClass()
+	this.nextElementSibling.classList.toggle('active')
+	event.preventDefault()
+}
+
+function removeActiveClass(){
+	subnavLinksArray.forEach( subnavLink => subnavLink.nextElementSibling.classList.remove('active'))
+}
+```
+
+Note the lack of animation.
+
+
+### Image Carousel 
+
+In _carousel.scss:
 
 ```css
 .secondary aside {
@@ -479,16 +551,29 @@ figure {
 }	
 ```
 
-Image Carousel - JavaScript
+### Image Carousel - JavaScript
 
-change the # links to point to high res images
+change the # links to point to high res images:
+
+```
+<ul class="image-tn">
+  <li>
+    <a href="img/bamboo.jpg"><img src="img/bamboo-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
+  </li>
+  <li>
+    <a href="img/bridge.jpg"><img src="img/bridge-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
+  </li>
+  <li>
+    <a href="img/pagoda.jpg"><img src="img/pagoda-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
+  </li>
+```
 
 ```js
 $('.image-tn a').on('click tap', function(){
     var imgsrc = $(this).attr('href');
     var titleText = $(this).find('img').attr('title');
-    $('.content-slider > img').attr('src',imgsrc);
-    $('.caption').html(titleText);
+    $('figure > img').attr('src', imgsrc);
+    $('figcaption').html(titleText);
     return false;
 });
 ```
@@ -509,7 +594,7 @@ function runCarousel(){
 
 Set the text in the carousel.
 
-Find the appropriate traversal.
+Find the appropriate traversal `const titleText = this.firstChild.title`:
 
 ```
 function runCarousel(){
@@ -520,6 +605,14 @@ function runCarousel(){
 	event.preventDefault()
 }
 ```
+
+Create a pointer to the figcation in order to manipulate its content:
+
+```
+const carouselPara = document.querySelector('figcaption')
+```
+
+Set the innerHTML `carouselPara.innerHTML = titleText` of the paragraph:
 
 ```
 function runCarousel(){
@@ -532,9 +625,31 @@ function runCarousel(){
 }
 ```
 
+Final script:
+
+```
+const carouselLinks = document.querySelectorAll('.image-tn a')
+const carouselLinksArray = [...carouselLinks]
+const carousel = document.querySelector('figure > img')
+const carouselPara = document.querySelector('figcaption')
+carouselLinksArray.forEach( carouselLink => carouselLink.addEventListener('click', runCarousel ))
+
+function runCarousel(){
+	const imageHref = this.getAttribute('href')
+	const titleText = this.firstChild.title
+	carouselPara.innerHTML = titleText
+	carousel.setAttribute('src', imageHref)
+	event.preventDefault()
+}
+```
 
 
-### The panels
+
+### The Panels (the third and final section)
+
+Review the design. 
+
+In _panels.scss:
 
 ```css
 h2 + h3 {
@@ -542,7 +657,7 @@ h2 + h3 {
 }
 ```
 
-Content Main > henry - Latest News
+Let's try floats and positioning.
 
 ```css
 .hentry {
@@ -586,6 +701,8 @@ The little date area
 	}
 }
 ```
+
+Parent container .hentries is used here.
 
 ```
 .hentries {
@@ -632,25 +749,76 @@ The little date area
 }
 ```
 
-attribute selectors
+Final _panels.scss:
+
+```
+.hentry {
+	position: relative;
+	float: left;
+	width: 50%;
+}
+
+.hentries {
+	display: flex;
+	abbr {
+		text-decoration: none;
+	}
+	.hentry {
+		float: left;
+		box-sizing: border-box;
+		width: 50%;
+		padding: 1rem;
+		.published {
+			float: left;
+			width: 27%;
+			box-sizing: border-box;
+			display: block;
+			padding: 5px 10px;
+			background-color: $link;
+			font-size: 10px;
+			text-align: center;
+			text-transform: uppercase;
+			color: #fff;
+		}
+		.day {
+			font-size: 32px;
+		}
+		h4 {
+			font-size: 20px;
+		}
+		p {
+			margin-top: 0;
+			float: right;
+			width: 70%;
+			box-sizing: border-box;
+		}
+	}
+}
+```
+
+Note RSS feed attribute selectors
 
 ```css
 a[rel="alternate"] {
 	padding-left: 20px;
-	background: url(img/a-rss.png) no-repeat 0 50%;
+	background: url(../img/a-rss.png) no-repeat 0 50%;
 }
 ```
 
-with svg
+with svg:
 
 ```css
 a[rel="alternate"] {
 	padding-left: 20px;
 	background: url(../img/feed-icon.svg) no-repeat 0 50%;
-	-webkit-background-size: contain;
     background-size: contain;
 }
 ```
+
+
+
+
+## Notes
 
 Additional Tweaks for Mobile (need to test on phone)
 
@@ -708,49 +876,12 @@ media queries for transform effects (on hover)
 }
 ```
 
-Basic print styles
-
-```css
- * { background: transparent !important; color: black !important;  } 
-  a, a:visited { color: #444 !important; text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  abbr[title]:after { content: " (" attr(title) ")"; }
-  tr, img { page-break-inside: avoid; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3{ page-break-after: avoid; }
-```
-
-add to media query:
-
-```css
-@media print { 	
-}
-```
-
-run a test print
 
 
 
 
 
-## Notes
-
-### Mixins
-
-```
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
-}
-$radius: 10px;
-```
 
 
-Add to the nav and ul
 
-```html
-<nav class="clearfix">
-	<ul class="clearfix">
-```
+
