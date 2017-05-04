@@ -6,8 +6,6 @@
 ![image](mobile.png)
 
 
-
-
 ## Tooling
 
 ```
