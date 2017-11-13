@@ -15,15 +15,14 @@ Making the page "mobile friendly" is required as is at least one instance on DOM
 
 ## Tooling
 
-petershift 
-Windows users for browser sync you must \" the ' package.json file so
+Windows users for browser sync you must escape `\"` the `'`  characters in the package.json file:
 
 "scripts": {
    "start": "browser-sync start --browser \"chrome\" --server \"app\" --files \"app\"",
    "startUp": "browser-sync start --browser \"chrome\" --server \"definition-list\" --files \"definition-list\""
  },
 
-notice also 'google chrome' becomes 'chrome' on windows
+notice also 'google chrome' becomes 'chrome' or 'chome.exe' on windows
 
 ```
 $ cd <session8>
