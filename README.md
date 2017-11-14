@@ -10,7 +10,7 @@ Making the page "mobile friendly" is required as is at least one instance on DOM
 
 
 ![image](wide.png)
-![image](mobile.png)
+![image](mobile.png) 
 
 
 ## Tooling
@@ -106,20 +106,24 @@ h3, h4 {
 }
 ```
 
+## Sticky Nav
+
+In navigation.scss:
+
+```css
+nav {
+	position: fixed;
+	width: 100%;
+	🔥
+}
+```
+
+Add padding to the top of the header to compensate.
+
+Add black color to the video iframe.
 
 
 ## Columns for Content
-
-Examine the differences between index.html and alt-index.html.
-
-* Replaced content divs with section tags
-* Replaced content-main divs with article tags
-* Replaced content-sub divs with aside tags
-* Replaced footer div with footer tag
-* Replaced content-sub div with nav tag
-* Added links to sections of the document using [ids](http://demo.tutorialzine.com/2015/02/single-page-app-without-a-framework/#)
-
-### Demo
 
 In a new _structure.scss file:
 
@@ -163,7 +167,7 @@ Apply the second breakpoint variable to medium screen sizes and above only:
 }
 ```
 
-### The Secondary div
+The Secondary div:
 
 ```css
 .secondary {
@@ -174,6 +178,19 @@ Apply the second breakpoint variable to medium screen sizes and above only:
 ```
 
 ### Micro clearfix
+
+```css
+section:before,
+section:after {
+    content: " ";
+    display: table;
+}
+section:after {
+    clear: both;
+}
+```
+
+If you use this approach it is best to define a cf class and use it as necessary.
 
 ```css
 .clearfix:before,
@@ -193,35 +210,58 @@ Add the clearfix to the section and secondary div:
 `<div class="secondary clearfix">`
 
 
-### A Simple CSS Grid
+### Flex Columns
 
-Remove the alterations to the html.
+```css
+@media (min-width: $break-sm) {
+	section {
+		max-width: 940px;
+		margin: 0 auto;
+		display: flex;
+	}
+	article {
+		flex: 2;
+		padding-right: 2rem;
+	}
+	aside {
+		flex: 1;
+	}
+}
+
+.secondary {
+	background: $lt-yellow;
+	border:1px solid $dk-yellow;
+	padding:1em;
+}
+```
+
+
+### A Simple CSS Grid
 
 Delete/comment everything from _structure.scss except the .secondary rule.
 
 ```css
-section {
-	max-width: $max-width;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 60% 40%;
-}
+	section {
+		max-width: $max-width;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 60% 40%;
+		grid-column-gap: 2rem;
+	}
 ```
 
+Note that the overall width of the two columns is greater than 100%.
+
+Use `fr` units instead to keep proportion and allow a gap that is contained by the overall max-width:
+
 ```css
-section {
-	max-width: $max-width;
-	margin: 0 24px;
-	margin-bottom: 24px; 
-	display: grid;
-	grid-template-columns: 100%;
-	@media(min-width: $break-med){
+	section {
+		max-width: $max-width;
 		margin: 0 auto;
-		margin-bottom: 24px;
-		grid-template-columns: 60% 37%;
-		grid-column-gap: 3%;
+		display: grid;
+		grid-template-columns: 8fr 4fr;
+		grid-column-gap: 2rem;
 	}
-}
 ```
 
 ### The Footer 
@@ -231,18 +271,21 @@ in _footer.scss:
 ```css
 footer {
 	margin-top: 40px;
-	padding-top: 40px;
+	padding-top: 40px; 
 	background-color: $link;
 	min-height: 320px;
-	.content {
+	.siteinfo {
 		display: grid;
-		grid-template-columns: 60% 17% 17%;
-		grid-column-gap: 3%;
+		grid-template-columns: 6fr 3fr 3fr;
+		grid-column-gap: 4rem;
 		max-width: $max-width;
 		margin: 0 auto;
 		color: #fff;
 		a {
 			color: #fff;
+		}
+		p {
+			margin-top: 0;
 		}
 	}
 }
