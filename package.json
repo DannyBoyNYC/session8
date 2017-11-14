@@ -1,5 +1,5 @@
 {
-  "name": "session8",
+  "name": "session7",
   "version": "1.0.0",
   "description": "## Homework",
   "main": "index.js",
@@ -10,18 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/front-end-foundations/session8.git"
+    "url": "git+https://github.com/front-end-foundations/session7.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/front-end-foundations/session8/issues"
+    "url": "https://github.com/front-end-foundations/session7/issues"
   },
-  "homepage": "https://github.com/front-end-foundations/session8#readme",
+  "homepage": "https://github.com/front-end-foundations/session7#readme",
   "devDependencies": {
-    "browser-sync": "^2.18.8",
-    "concurrently": "^3.4.0",
-    "node-sass": "^4.5.2"
+    "browser-sync": "^2.18.13",
+    "concurrently": "^3.5.0",
+    "node-sass": "^4.6.0"
   }
 }

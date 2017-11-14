@@ -1,0 +1,52 @@
+header {
+	max-width: $max-width;
+	margin: 0 auto;
+
+	h1 {
+		font-size: 3rem;
+	}
+	p {
+		display: none;
+		color: $med-gray;
+		@media (min-width: $break-sm){
+			display: block;
+			font-size: 1.5rem;
+			text-transform: uppercase;
+			line-height: 1.1;
+			margin-bottom: 1rem;
+		}
+	}
+
+	h1 + p {
+		border-top: 3px double $dk-yellow;
+		padding-top: 1rem;
+	}
+
+	p + p {
+		font-size: 1rem;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
