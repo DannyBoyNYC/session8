@@ -9,8 +9,17 @@ It is not required that you prepare a specific number of pages. Depending on the
 Making the page "mobile friendly" is required as is at least one instance of DOM scripting.
 
 
+Top of the page
+
 ![image](/img/wide.png)
-![image](/img/mobile.png) 
+
+Mobile view
+
+![image](/img/mobile.png)
+
+Full page
+
+![image](/img/siteDesign.png) 
 
 
 ## Tooling
@@ -78,7 +87,7 @@ iframe {
 
 Also add some basic styling to _base.scss:
 
-```
+```css
 p {
 	margin: 12px 0;
 }
@@ -99,7 +108,7 @@ h3, h4 {
 
 ## Sticky Nav
 
-In navigation.scss:
+In `_nav.scss`:
 
 ```css
 nav {
@@ -115,6 +124,8 @@ Add black color to the video iframe.
 
 
 ## Columns for Content
+
+Review the html structure of the page.
 
 In a new _structure.scss file:
 
@@ -227,32 +238,32 @@ Add the clearfix to the section and secondary div:
 ```
 
 
-### A Simple CSS Grid
+### CSS Grid
 
 Delete/comment everything from _structure.scss except the .secondary rule.
 
 ```css
-	section {
-		max-width: $max-width;
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 60% 40%;
-		grid-column-gap: 2rem;
-	}
+section {
+	max-width: $max-width;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 60% 40%;
+	grid-column-gap: 2rem;
+}
 ```
 
-Note that the overall width of the two columns is greater than 100%.
+Note that, because of the column gap, the overall width of the two columns is greater than 100%.
 
 Use `fr` units instead to keep proportion and allow a gap that is contained by the overall max-width:
 
 ```css
-	section {
-		max-width: $max-width;
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 8fr 4fr;
-		grid-column-gap: 2rem;
-	}
+section {
+	max-width: $max-width;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 8fr 4fr;
+	grid-column-gap: 2rem;
+}
 ```
 
 ### The Footer 
