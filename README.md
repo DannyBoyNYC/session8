@@ -34,6 +34,11 @@ img, iframe {
 	width: 100%;
 }
 
+ul {
+	list-style: none;
+	padding: 0;
+}
+
 iframe {
 	background-color: #000;
 }
@@ -69,6 +74,25 @@ footer .siteinfo {
 
 .siteinfo > * {
 	flex: 1;
+}
+```
+
+Add responsive code for the main columns.
+
+```css
+@media (max-width: 420px) {
+	nav ul {
+		flex-direction: column;
+	}
+	section {
+		display: block;
+	}
+	article {
+		padding-right: 0;
+	}
+	footer .siteinfo {
+		display: block;
+	}
 }
 ```
 
