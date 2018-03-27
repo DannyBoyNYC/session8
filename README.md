@@ -21,6 +21,57 @@ Full page
 
 ![image](/img/siteDesign.png) 
 
+Review the structure of the page using the mini version.
+
+```css
+nav ul {
+	display: flex;
+	justify-content: space-around;
+	background: #ddd;
+}
+
+img, iframe {
+	width: 100%;
+}
+
+iframe {
+	background-color: #000;
+}
+
+header {
+	max-width: 980px;
+	margin: 0 auto;
+}
+
+section {
+	display: flex;
+	max-width: 980px;
+	margin: 0 auto;
+	border: 4px solid red;
+}
+
+article {
+	flex: 2;
+	padding-right: 2rem;
+	background: #eee;
+}
+
+aside {
+	flex: 1;
+	background: #ddd;
+}
+
+footer .siteinfo {
+	display: flex;
+	max-width: 980px;
+	margin: 0 auto;
+}
+
+.siteinfo > * {
+	flex: 1;
+}
+```
+
 
 ## Tooling
 
@@ -41,7 +92,6 @@ $ npm run boom!
 
 Review: 
 
-* structure of page
 * directory structure
 * header nesting .css to .scss
 * sass mapping
