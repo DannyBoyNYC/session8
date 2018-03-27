@@ -6,7 +6,7 @@ Start on your final projects. There are very few requirements for this project o
 
 It is not required that you prepare a specific number of pages. Depending on the design goals, one good template could suffice for many pages and it is possible to spend as much time on a single page as on an entire site.
 
-Making the page "mobile friendly" is required as is at least one instance on DOM scripting.
+Making the page "mobile friendly" is required as is at least one instance of DOM scripting.
 
 
 ![image](/img/wide.png)
@@ -15,41 +15,32 @@ Making the page "mobile friendly" is required as is at least one instance on DOM
 
 ## Tooling
 
-Windows users for browser sync you must escape `\"` the `'`  characters in the package.json file:
+Windows users - for browser sync you must escape `\"` the `'`  characters in the package.json file, e.g.:
 
+```js
 "scripts": {
-   "start": "browser-sync start --browser \"chrome\" --server \"app\" --files \"app\"",
-   "startUp": "browser-sync start --browser \"chrome\" --server \"definition-list\" --files \"definition-list\""
+   "startmac": "browser-sync start --browser \"chrome\" --server \"app\" --files \"app\"",
+   "startpc": "browser-sync start --browser \"chrome\" --server \"definition-list\" --files \"definition-list\""
  },
-
-notice also 'google chrome' becomes 'chrome' or 'chome.exe' on windows
-
 ```
+
+```sh
 $ cd <session8>
 $ npm install
+$ npm run boom!
 ```
-
-```
-npm install build-error-notifier --save-dev
-```
-
-```
-"sassy": "node-sass --watch sass --output app/css --source-map true 2>&1 | build-error-notifier",
-```
-
-`$ npm run boom!`
-
 
 Review: 
 
+* structure of page
+* directory structure
+* header nesting .css to .scss
+* sass mapping
 * Media Query - Mobile First
 * Variables
-* Responsive Main Nav
-* Show/Hide Nav JS
-* Animation with CSS
-* Variables
+* Responsive Nav .scss
 
-Add new variables:
+Add variables:
 
 ```
 $max-width: 940px;
