@@ -9,8 +9,8 @@ It is not required that you prepare a specific number of pages. Depending on the
 Making the page "mobile friendly" is required as is at least one instance on DOM scripting.
 
 
-![image](wide.png)
-![image](mobile.png) 
+![image](/img/wide.png)
+![image](/img/mobile.png) 
 
 
 ## Tooling
