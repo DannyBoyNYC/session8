@@ -268,7 +268,9 @@ section {
 
 ### The Footer 
 
-in _footer.scss:
+Examine the html structure for this section.
+
+Import a new file `_footer.scss` in styles.scss and add:
 
 ```css
 footer {
@@ -293,6 +295,8 @@ footer {
 }
 ```
 
+Test on large and small screens.
+
 ### Video Switcher - JavaScript
 
 Active class
@@ -316,33 +320,20 @@ Format the video buttons
 }
 ```
 
-The old school JavaScript
-
-```
-$('.content-video a').on('click',function(){
-	$('.content-video a').removeClass('active');
-	$(this).addClass('active');
-	var videoToPlay = $(this).attr('href');
-	$('iframe').attr('src',videoToPlay);
-	console.log(videoToPlay);
-	return false;
- });
-```
-
 Create variables and spread the links into an array.
 
-```
-const videoLinks = document.querySelectorAll('.content-video a')
-const videoLinksArray = [...videoLinks]
-videoLinksArray.forEach( videoLink => videoLink.addEventListener('click', selectVideo ))
+```js
+const videoLinks = document.querySelectorAll('.content-video a');
+videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
 ```
 
-Add a function:
+Examine the nodelist in the console.
 
-```
-const videoLinks = document.querySelectorAll('.content-video a')
-const videoLinksArray = [...videoLinks]
-videoLinksArray.forEach( videoLink => videoLink.addEventListener('click', selectVideo ))
+Add the `selectVideo` function:
+
+```js
+const videoLinks = document.querySelectorAll('.content-video a');
+videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
 
 function selectVideo(){
 	console.log(this)
@@ -350,9 +341,9 @@ function selectVideo(){
 }
 ```
 
-Examine the nodelist and arry variables in the console.
+Examine the nodelist in the console.
 
-```
+```js
 function selectVideo(){
 	const videoToPlay = this.getAttribute('href')
 	console.log(videoToPlay)
@@ -362,27 +353,25 @@ function selectVideo(){
 
 Add the iFrame variable `const iFrame = document.querySelector('iframe')` and set its src attribute `iFrame.setAttribute('src', videoToPlay)`:
 
-```
-const iFrame = document.querySelector('iframe')
-const videoLinks = document.querySelectorAll('.content-video a')
-const videoLinksArray = [...videoLinks]
-videoLinksArray.forEach( videoLink => videoLink.addEventListener('click', selectVideo ))
+```js
+const iFrame = document.querySelector('iframe') // NEW
+const videoLinks = document.querySelectorAll('.content-video a');
+videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
 
 function selectVideo(){
 	const videoToPlay = this.getAttribute('href')
 	iFrame.setAttribute('src', videoToPlay)
-	console.log(iFrame)
+	console.log(iFrame) // NEW
 	event.preventDefault()
 }
 ```
 
 Switch the active class:
 
-```
-const iFrame = document.querySelector('iframe')
-const videoLinks = document.querySelectorAll('.content-video a')
-const videoLinksArray = [...videoLinks]
-videoLinksArray.forEach( videoLink => videoLink.addEventListener('click', selectVideo ))
+```js
+const iFrame = document.querySelector('iframe') // NEW
+const videoLinks = document.querySelectorAll('.content-video a');
+videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
 
 function selectVideo(){
 	removeActiveClass()
@@ -393,11 +382,11 @@ function selectVideo(){
 }
 
 function removeActiveClass(){
-	videoLinksArray.forEach( videoLink => videoLink.classList.remove('active'))
+	videoLinks.forEach( videoLink => videoLink.classList.remove('active'))
 }
 ```
 
-
+# Start of session 9
 
 ### Nav Sub
 
