@@ -1,6 +1,7 @@
 header {
 	max-width: 940px;
-
+	margin: 0 auto;
+	padding: 3rem;
 	h1 {
 		font-size: 3rem;
 	}
@@ -8,7 +9,7 @@ header {
 	p {
 		display: none;
 
-		@media (min-width: $break-sm){
+		@media (min-width: $break-sm) {
 			display: block;
 			font-size: 1.5rem;
 			text-transform: uppercase;
@@ -27,11 +28,3 @@ header {
 		color: $med-gray;
 	}
 }
-
-
-
-
-
-
-
-

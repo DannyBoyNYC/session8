@@ -1,19 +1,50 @@
 body {
 	font: 100%/1.5 Cambria, Garamond, Georgia, Times, serif;
 	color: #333;
-	background:#fff;
+	background: #fff;
 }
-a { 
-	text-decoration:none; 
-	color:#4e7c92;
+a {
+	text-decoration: none;
+	color: #4e7c92;
 	-webkit-tap-highlight-color: #4e7c92;
 }
 a:hover {
 	color: #4e7c92;
 }
 
-img, iframe {
+img,
+iframe {
 	width: 100%;
 }
 
-::selection { background:#4e7c92; color:#fff; }
+::selection {
+	background: #4e7c92;
+	color: #fff;
+}
+
+p {
+	margin: 12px 0;
+}
+
+h2 {
+	margin-bottom: 12px;
+	padding-bottom: 6px;
+	font-size: 24px;
+	letter-spacing: -1px;
+}
+
+h3,
+h4 {
+	font-size: 16px;
+	line-height: 1.25;
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
