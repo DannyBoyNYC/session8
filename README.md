@@ -367,11 +367,40 @@ footer {
 
 Test on large and small screens.
 
+Add media query to switch the grid from columns to rows for small screens:
+
+```css
+footer {
+	margin-top: 40px;
+	padding-top: 40px;
+	background-color: $link;
+	min-height: 320px;
+	.siteinfo {
+		display: grid;
+		grid-template-rows: 3fr 3fr 3fr;
+		padding: 1rem;
+		@media (min-width: $break-sm) {
+			grid-template-columns: 6fr 3fr 3fr;
+			grid-column-gap: 4rem;
+			max-width: $max-width;
+		}
+		margin: 0 auto;
+		color: #fff;
+		a {
+			color: #fff;
+		}
+		p {
+			margin-top: 0;
+		}
+	}
+}
+```
+
 ### Video Switcher - JavaScript
 
 Active class
 
-Format the video buttons
+Format the video buttons in `_video.scss`:
 
 ```css
 .btn-list {
@@ -394,10 +423,14 @@ Create variables and spread the links into an array.
 
 ```js
 const videoLinks = document.querySelectorAll('.content-video a');
-videoLinks.forEach(videoLink => videoLink.addEventListener('click', selectVideo));
+videoLinks.forEach(videoLink =>
+	videoLink.addEventListener('click', function() {
+		event.preventDefault();
+	})
+);
 ```
 
-Examine the nodelist in the console.
+Examine the `videoLinks` nodelist in the console.
 
 Add the `selectVideo` function:
 
@@ -411,7 +444,17 @@ function selectVideo() {
 }
 ```
 
+This might be a good time to create an external `scripts.js` file.
+
 Examine the nodelist in the console.
+
+Note that you can create a true Array from it by declaring a new variable and spreading the contents on the nodeList into it:
+
+`videoLinksArray = [...videoLinks]`
+
+This is not necessary here as a nodeList makes a `forEach` method available to us.
+
+Isolate the `href` value:
 
 ```js
 function selectVideo() {
@@ -421,7 +464,13 @@ function selectVideo() {
 }
 ```
 
-Add the iFrame variable `const iFrame = document.querySelector('iframe')` and set its src attribute `iFrame.setAttribute('src', videoToPlay)`:
+Add a variable for the iFrame:
+
+`const iFrame = document.querySelector('iframe')`
+
+and set its src attribute:
+
+`iFrame.setAttribute('src', videoToPlay)`:
 
 ```js
 const iFrame = document.querySelector('iframe'); // NEW
@@ -430,7 +479,7 @@ videoLinks.forEach(videoLink => videoLink.addEventListener('click', selectVideo)
 
 function selectVideo() {
 	const videoToPlay = this.getAttribute('href');
-	iFrame.setAttribute('src', videoToPlay);
+	iFrame.setAttribute('src', videoToPlay); // NEW
 	console.log(iFrame); // NEW
 	event.preventDefault();
 }
@@ -439,17 +488,19 @@ function selectVideo() {
 Switch the active class:
 
 ```js
-const iFrame = document.querySelector('iframe'); // NEW
+const iFrame = document.querySelector('iframe');
 const videoLinks = document.querySelectorAll('.content-video a');
 videoLinks.forEach(videoLink => videoLink.addEventListener('click', selectVideo));
 
 function selectVideo() {
-	removeActiveClass();
-	this.classList.add('active');
+	removeActiveClass(); // NEW
+	this.classList.add('active'); // NEW
 	const videoToPlay = this.getAttribute('href');
 	iFrame.setAttribute('src', videoToPlay);
 	event.preventDefault();
 }
+
+// NEW
 
 function removeActiveClass() {
 	videoLinks.forEach(videoLink => videoLink.classList.remove('active'));
