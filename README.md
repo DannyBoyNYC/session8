@@ -8,7 +8,6 @@ It is not required that you prepare a specific number of pages. Depending on the
 
 Making the page "mobile friendly" is required as is at least one instance of DOM scripting.
 
-
 Top of the page
 
 ![image](/img/wide.png)
@@ -19,7 +18,7 @@ Mobile view
 
 Full page
 
-![image](/img/siteDesign.png) 
+![image](/img/siteDesign.png)
 
 Review the structure of the page using the mini version.
 
@@ -30,7 +29,8 @@ nav ul {
 	background: #ddd;
 }
 
-img, iframe {
+img,
+iframe {
 	width: 100%;
 }
 
@@ -96,10 +96,9 @@ Add responsive code for the main columns.
 }
 ```
 
-
 ## Tooling
 
-Windows users - for browser sync you must escape `\"` the `'`  characters in the package.json file, e.g.:
+Windows users - for browser sync you must escape `\"` the `'` characters in the package.json file, e.g.:
 
 ```js
 "scripts": {
@@ -114,7 +113,7 @@ $ npm install
 $ npm run boom!
 ```
 
-Review: 
+Review:
 
 * directory structure
 * header nesting .css to .scss
@@ -125,7 +124,7 @@ Review:
 
 Add variables:
 
-```
+```sass
 $max-width: 940px;
 
 $break-sm: 480px;
@@ -143,23 +142,22 @@ $dk-yellow: #dbd1b5;
 $lt-yellow: #f8f7f3;
 ```
 
-
 ### Responsive Images
 
-iFrame and images need to expand and contract to fit. 
+iFrame and images need to expand and contract to fit.
 
 Note the inline width and height parameters for the iFrame in the HTML.
 
-_base.scss:
+`_base.scss`:
 
 ```css
 img,
 iframe {
-  width: 100%;
+	width: 100%;
 }
 ```
 
-Also add some basic styling to _base.scss:
+Also add some basic styling to `_base.scss`:
 
 ```css
 p {
@@ -173,7 +171,8 @@ h2 {
 	letter-spacing: -1px;
 }
 
-h3, h4 {
+h3,
+h4 {
 	font-size: 16px;
 	line-height: 1.25;
 	margin-bottom: 20px;
@@ -196,12 +195,11 @@ Add padding to the top of the header to compensate.
 
 Add black color to the video iframe.
 
-
 ## Columns for Content
 
 Review the html structure of the page.
 
-In a new _structure.scss file:
+In a new `_structure.scss` file:
 
 ```css
 section {
@@ -210,7 +208,7 @@ section {
 	padding-bottom: 1.5em;
 }
 article {
- 	box-sizing: border-box;
+	box-sizing: border-box;
 	float: left;
 	width: 60%;
 	padding-right: 24px;
@@ -248,8 +246,8 @@ The Secondary div:
 ```css
 .secondary {
 	background: $lt-yellow;
-	border:1px solid $dk-yellow;
-	padding:1em;
+	border: 1px solid $dk-yellow;
+	padding: 1em;
 }
 ```
 
@@ -258,11 +256,11 @@ The Secondary div:
 ```css
 section:before,
 section:after {
-    content: " ";
-    display: table;
+	content: ' ';
+	display: table;
 }
 section:after {
-    clear: both;
+	clear: both;
 }
 ```
 
@@ -271,11 +269,11 @@ If you use this approach it is best to define a cf class and use it as necessary
 ```css
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+	content: ' ';
+	display: table;
 }
 .clearfix:after {
-    clear: both;
+	clear: both;
 }
 ```
 
@@ -284,7 +282,6 @@ Add the clearfix to the section and secondary div:
 `<section class="clearfix">`
 
 `<div class="secondary clearfix">`
-
 
 ### Flex Columns
 
@@ -306,15 +303,14 @@ Add the clearfix to the section and secondary div:
 
 .secondary {
 	background: $lt-yellow;
-	border:1px solid $dk-yellow;
-	padding:1em;
+	border: 1px solid $dk-yellow;
+	padding: 1em;
 }
 ```
 
-
 ### CSS Grid
 
-Delete/comment everything from _structure.scss except the .secondary rule.
+Delete/comment everything from `_structure.scss` except the `.secondary` rule.
 
 ```css
 section {
@@ -340,7 +336,7 @@ section {
 }
 ```
 
-### The Footer 
+### The Footer
 
 Examine the html structure for this section.
 
@@ -349,7 +345,7 @@ Import a new file `_footer.scss` in styles.scss and add:
 ```css
 footer {
 	margin-top: 40px;
-	padding-top: 40px; 
+	padding-top: 40px;
 	background-color: $link;
 	min-height: 320px;
 	.siteinfo {
@@ -398,7 +394,7 @@ Create variables and spread the links into an array.
 
 ```js
 const videoLinks = document.querySelectorAll('.content-video a');
-videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
+videoLinks.forEach(videoLink => videoLink.addEventListener('click', selectVideo));
 ```
 
 Examine the nodelist in the console.
@@ -407,73 +403,75 @@ Add the `selectVideo` function:
 
 ```js
 const videoLinks = document.querySelectorAll('.content-video a');
-videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
+videoLinks.forEach(videoLink => videoLink.addEventListener('click', selectVideo));
 
-function selectVideo(){
-	console.log(this)
-	event.preventDefault()
+function selectVideo() {
+	console.log(this);
+	event.preventDefault();
 }
 ```
 
 Examine the nodelist in the console.
 
 ```js
-function selectVideo(){
-	const videoToPlay = this.getAttribute('href')
-	console.log(videoToPlay)
-	event.preventDefault()
+function selectVideo() {
+	const videoToPlay = this.getAttribute('href');
+	console.log(videoToPlay);
+	event.preventDefault();
 }
 ```
 
 Add the iFrame variable `const iFrame = document.querySelector('iframe')` and set its src attribute `iFrame.setAttribute('src', videoToPlay)`:
 
 ```js
-const iFrame = document.querySelector('iframe') // NEW
+const iFrame = document.querySelector('iframe'); // NEW
 const videoLinks = document.querySelectorAll('.content-video a');
-videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
+videoLinks.forEach(videoLink => videoLink.addEventListener('click', selectVideo));
 
-function selectVideo(){
-	const videoToPlay = this.getAttribute('href')
-	iFrame.setAttribute('src', videoToPlay)
-	console.log(iFrame) // NEW
-	event.preventDefault()
+function selectVideo() {
+	const videoToPlay = this.getAttribute('href');
+	iFrame.setAttribute('src', videoToPlay);
+	console.log(iFrame); // NEW
+	event.preventDefault();
 }
 ```
 
 Switch the active class:
 
 ```js
-const iFrame = document.querySelector('iframe') // NEW
+const iFrame = document.querySelector('iframe'); // NEW
 const videoLinks = document.querySelectorAll('.content-video a');
-videoLinks.forEach( videoLink => videoLink.addEventListener('click', selectVideo ));
+videoLinks.forEach(videoLink => videoLink.addEventListener('click', selectVideo));
 
-function selectVideo(){
-	removeActiveClass()
-	this.classList.add('active')
-	const videoToPlay = this.getAttribute('href')
-	iFrame.setAttribute('src', videoToPlay)
-	event.preventDefault()
+function selectVideo() {
+	removeActiveClass();
+	this.classList.add('active');
+	const videoToPlay = this.getAttribute('href');
+	iFrame.setAttribute('src', videoToPlay);
+	event.preventDefault();
 }
 
-function removeActiveClass(){
-	videoLinks.forEach( videoLink => videoLink.classList.remove('active'))
+function removeActiveClass() {
+	videoLinks.forEach(videoLink => videoLink.classList.remove('active'));
 }
 ```
 
-# Start of session 9
+#### End here - start at session 9
 
 ### Nav Sub
 
 Integrate the JavaScript for nav-sub into the layout.
 
-in _navsub.scss:
+Before we start check out [this article](https://css-tricks.com/quick-reminder-that-details-summary-is-the-easiest-way-ever-to-make-an-accordion/) on the simplest way to create an accordion.
+
+in `_navsub.scss`:
 
 ```css
 .nav-sub {
 	padding: 10px 20px;
 	background-color: $lt-yellow;
 	border: 1px solid $dk-yellow;
-	@media (min-width: $break-med){
+	@media (min-width: $break-med) {
 		width: 40%;
 		float: right;
 		border-radius: $radius;
@@ -482,30 +480,30 @@ in _navsub.scss:
 		width: auto;
 	}
 	ul {
-		display:none;
+		display: none;
 	}
 	li:first-child ul {
-		display:block;
+		display: block;
 	}
-	> li > a { 
-		font-weight:bold; 
+	> li > a {
+		font-weight: bold;
 	}
 	ul li {
-		padding-left:12px;
+		padding-left: 12px;
 	}
 }
 ```
 
 Note the `>` [selector](https://www.w3schools.com/cssref/css_selectors.asp). Also see [Combinators](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors)
 
-Add class `.active {display: block !important}` to _nav-sub.scss:
+Add class `.active {display: block !important}` to `_nav-sub.scss`:
 
 ```css
 .nav-sub {
 	padding: 10px 20px;
 	background-color: $lt-yellow;
 	border: 1px solid $dk-yellow;
-	@media (min-width: $break-med){
+	@media (min-width: $break-med) {
 		width: 40%;
 		float: right;
 		border-radius: $radius;
@@ -514,46 +512,36 @@ Add class `.active {display: block !important}` to _nav-sub.scss:
 		width: auto;
 	}
 	ul {
-		display:none;
+		display: none;
 	}
 	li:first-child ul {
-		display:block;
+		display: block;
 	}
-	> li > a { 
-		font-weight:bold; 
+	> li > a {
+		font-weight: bold;
 	}
 	ul li {
-		padding-left:12px;
+		padding-left: 12px;
 	}
-	.active {display: block !important}
+	.active {
+		display: block !important;
+	}
 }
-
 ```
 
-Accordion for Nav Sub. 
+Accordion for Nav Sub.
 
-Old school JavaScript:
+ES6 JavaScript.
 
 ```js
-$('.nav-sub>li a').on('click tap', function(){
-	$('.nav-sub ul').slideUp();
-	$(this).next().slideToggle();
+const subnavLinks = document.querySelectorAll('.nav-sub > li a');
+console.log(subnavLinks);
+const subnavLinksArray = [...subnavLinks];
+subnavLinksArray.forEach(subnavLink => subnavLink.addEventListener('click', openAccordion));
+
+function openAccordion() {
 	console.log(this);
-	return false;
-});
-```
-
-ES6 JavaScript. 
-
-```
-const subnavLinks = document.querySelectorAll('.nav-sub > li a')
-console.log(subnavLinks)
-const subnavLinksArray = [...subnavLinks]
-subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
-
-function openAccordion(){
-	console.log(this)
-	event.preventDefault()
+	event.preventDefault();
 }
 ```
 
@@ -561,32 +549,32 @@ function openAccordion(){
 
 nextElementSibling, nextSibling, previousSibling, childNodes, firstChild ...
 
-```
-const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
-const subnavLinksArray = [...subnavLinks]
-subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
+```js
+const subnavLinks = document.querySelectorAll('.nav-sub > li > a');
+const subnavLinksArray = [...subnavLinks];
+subnavLinksArray.forEach(subnavLink => subnavLink.addEventListener('click', openAccordion));
 
-function openAccordion(){
-	this.nextElementSibling.classList.toggle('active')
-	event.preventDefault()
+function openAccordion() {
+	this.nextElementSibling.classList.toggle('active');
+	event.preventDefault();
 }
 ```
 
 Remove the active class from the DOM before applying with `removeActiveClass()`:
 
-```
-const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
-const subnavLinksArray = [...subnavLinks]
-subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
+```js
+const subnavLinks = document.querySelectorAll('.nav-sub > li > a');
+const subnavLinksArray = [...subnavLinks];
+subnavLinksArray.forEach(subnavLink => subnavLink.addEventListener('click', openAccordion));
 
-function openAccordion(){
-	removeActiveClass()
-	this.nextElementSibling.classList.toggle('active')
-	event.preventDefault()
+function openAccordion() {
+	removeActiveClass();
+	this.nextElementSibling.classList.toggle('active');
+	event.preventDefault();
 }
 
-function removeActiveClass(){
-	subnavLinksArray.forEach( subnavLink => subnavLink.nextElementSibling.classList.remove('active'))
+function removeActiveClass() {
+	subnavLinksArray.forEach(subnavLink => subnavLink.nextElementSibling.classList.remove('active'));
 }
 ```
 
@@ -594,41 +582,40 @@ Important - we have broken the removeActiveClass() function for the video switch
 
 Set the initial state of the accordion with: `subnavLinksArray[0].nextElementSibling.classList.add('active')`
 
-```
-const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
-const subnavLinksArray = [...subnavLinks]
-subnavLinksArray.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
-subnavLinksArray[0].nextElementSibling.classList.add('active')
+```js
+const subnavLinks = document.querySelectorAll('.nav-sub > li > a');
+const subnavLinksArray = [...subnavLinks];
+subnavLinksArray.forEach(subnavLink => subnavLink.addEventListener('click', openAccordion));
+subnavLinksArray[0].nextElementSibling.classList.add('active');
 
-function openAccordion(){
-	removeActiveClass()
-	this.nextElementSibling.classList.toggle('active')
-	event.preventDefault()
+function openAccordion() {
+	removeActiveClass();
+	this.nextElementSibling.classList.toggle('active');
+	event.preventDefault();
 }
 
-function removeActiveClass(){
-	subnavLinksArray.forEach( subnavLink => subnavLink.nextElementSibling.classList.remove('active'))
+function removeActiveClass() {
+	subnavLinksArray.forEach(subnavLink => subnavLink.nextElementSibling.classList.remove('active'));
 }
 ```
 
 and remove the css created earlier:
 
-```
-	// li:first-child ul {
-	// 	display:block;
-	// }
+```css
+// li:first-child ul {
+// 	display:block;
+// }
 ```
 
 Note the refresh behaviour.
 
 Note the lack of animation.
 
-
-### Image Carousel 
+### Image Carousel
 
 Do a DOM review of this section of the page.
 
-In _carousel.scss:
+In `_carousel.scss`:
 
 ```css
 .secondary aside {
@@ -647,7 +634,7 @@ In _carousel.scss:
 			transition: all 0.2s linear;
 			&:hover {
 				transform: scale(1.1);
-				box-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+				box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 			}
 		}
 	}
@@ -673,18 +660,18 @@ figure {
 	position: relative;
 	figcaption {
 		padding: 6px;
-		background: rgba(255,255,255,0.7);
+		background: rgba(255, 255, 255, 0.7);
 		position: absolute;
 		bottom: 0;
 	}
-}	
+}
 ```
 
 ### Image Carousel - JavaScript
 
 change the # links to point to high res images:
 
-```
+```html
 <ul class="image-tn">
   <li>
     <a href="img/bamboo.jpg"><img src="img/bamboo-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
@@ -697,29 +684,17 @@ change the # links to point to high res images:
   </li>
 ```
 
-Old school JavaScript:
-
 ```js
-$('.image-tn a').on('click tap', function(){
-    var imgsrc = $(this).attr('href');
-    var titleText = $(this).find('img').attr('title');
-    $('figure > img').attr('src', imgsrc);
-    $('figcaption').html(titleText);
-    return false;
-});
-```
+const carouselLinks = document.querySelectorAll('.image-tn a');
+const carouselLinksArray = [...carouselLinks];
+const carousel = document.querySelector('figure img');
 
-```
-const carouselLinks = document.querySelectorAll('.image-tn a')
-const carouselLinksArray = [...carouselLinks]
-const carousel = document.querySelector('figure img')
+carouselLinksArray.forEach(carouselLink => carouselLink.addEventListener('click', runCarousel));
 
-carouselLinksArray.forEach( carouselLink => carouselLink.addEventListener('click', runCarousel ))
-
-function runCarousel(){
-	const imageHref = this.getAttribute('href')
-	carousel.setAttribute('src', imageHref)
-	event.preventDefault()
+function runCarousel() {
+	const imageHref = this.getAttribute('href');
+	carousel.setAttribute('src', imageHref);
+	event.preventDefault();
 }
 ```
 
@@ -727,66 +702,64 @@ Set the text in the carousel.
 
 Find the appropriate traversal `const titleText = this.firstChild.title`:
 
-```
-function runCarousel(){
-	const imageHref = this.getAttribute('href')
-	const titleText = this.firstChild.title
-	console.log(titleText)
-	carousel.setAttribute('src', imageHref)
-	event.preventDefault()
+```js
+function runCarousel() {
+	const imageHref = this.getAttribute('href');
+	const titleText = this.firstChild.title;
+	console.log(titleText);
+	carousel.setAttribute('src', imageHref);
+	event.preventDefault();
 }
 ```
 
 Create a pointer to the figcaption in order to manipulate its content:
 
-```
-const carouselPara = document.querySelector('figcaption')
+```js
+const carouselPara = document.querySelector('figcaption');
 ```
 
 Set the innerHTML `carouselPara.innerHTML = titleText` of the paragraph:
 
-```
-function runCarousel(){
-	const imageHref = this.getAttribute('href')
-	const titleText = this.firstChild.title
-	carouselPara.innerHTML = titleText
-	console.log(carouselPara)
-	carousel.setAttribute('src', imageHref)
-	event.preventDefault()
+```js
+function runCarousel() {
+	const imageHref = this.getAttribute('href');
+	const titleText = this.firstChild.title;
+	carouselPara.innerHTML = titleText;
+	console.log(carouselPara);
+	carousel.setAttribute('src', imageHref);
+	event.preventDefault();
 }
 ```
 
 Final script:
 
-```
-const carouselLinks = document.querySelectorAll('.image-tn a')
-const carouselLinksArray = [...carouselLinks]
-const carousel = document.querySelector('figure > img')
-const carouselPara = document.querySelector('figcaption')
-carouselLinksArray.forEach( carouselLink => carouselLink.addEventListener('click', runCarousel ))
+```js
+const carouselLinks = document.querySelectorAll('.image-tn a');
+const carouselLinksArray = [...carouselLinks];
+const carousel = document.querySelector('figure > img');
+const carouselPara = document.querySelector('figcaption');
+carouselLinksArray.forEach(carouselLink => carouselLink.addEventListener('click', runCarousel));
 
-function runCarousel(){
-	const imageHref = this.getAttribute('href')
-	const titleText = this.firstChild.title
-	carouselPara.innerHTML = titleText
-	carousel.setAttribute('src', imageHref)
-	event.preventDefault()
+function runCarousel() {
+	const imageHref = this.getAttribute('href');
+	const titleText = this.firstChild.title;
+	carouselPara.innerHTML = titleText;
+	carousel.setAttribute('src', imageHref);
+	event.preventDefault();
 }
 ```
-
-
 
 ### The Panels (the third and final section)
 
 Review the design. Let's try floats and absolute/relative positioning.
 
-In _panels.scss:
+In `_panels.scss`:
 
 ```css
 .hentry {
-  position: relative;
-  float: left;
-  width: 50%;
+	position: relative;
+	float: left;
+	width: 50%;
 }
 ```
 
@@ -845,39 +818,39 @@ Adding abbr formatting, removing positioning and using flexbox and floats.
 			float: left;
 			width: 24%;
 			box-sizing: border-box;
-		// position: absolute;
-		// top: 250px;
-		// left: 1rem;
-		display: block;
-		// width: 50px;
-		padding: 5px 10px;
-		background-color: $link;
-		font-size: 10px;
-		text-align: center;
-		text-transform: uppercase;
-		color: #fff;
+			// position: absolute;
+			// top: 250px;
+			// left: 1rem;
+			display: block;
+			// width: 50px;
+			padding: 5px 10px;
+			background-color: $link;
+			font-size: 10px;
+			text-align: center;
+			text-transform: uppercase;
+			color: #fff;
+		}
+		.day {
+			font-size: 32px;
+		}
+		h4 {
+			// margin: 0 0 10px 60px;
+			font-size: 20px;
+		}
+		p {
+			// margin-left: 60px;
+			margin-top: 0;
+			float: right;
+			width: 70%;
+			box-sizing: border-box;
+		}
 	}
-	.day {
-		font-size: 32px;
-	}
-	h4 {
-		// margin: 0 0 10px 60px;
-		font-size: 20px;
-	}
-	p {
-		// margin-left: 60px;
-		margin-top: 0;
-		float: right;
-		width: 70%;
-		box-sizing: border-box;
-	}
-}
 }
 ```
 
-Final _panels.scss:
+Final `_panels.scss`:
 
-```
+```css
 .hentries {
 	display: flex;
 	abbr {
@@ -920,7 +893,7 @@ Final _panels.scss:
 Note RSS feed attribute selectors
 
 ```css
-a[rel="alternate"] {
+a[rel='alternate'] {
 	padding-left: 20px;
 	background: url(../img/a-rss.png) no-repeat 0 50%;
 }
@@ -929,14 +902,12 @@ a[rel="alternate"] {
 with svg:
 
 ```css
-a[rel="alternate"] {
+a[rel='alternate'] {
 	padding-left: 20px;
 	background: url(../img/feed-icon.svg) no-repeat 0 50%;
-    background-size: contain;
+	background-size: contain;
 }
 ```
-
-
 
 ## Notes
 
@@ -1117,27 +1088,21 @@ function jump(target, options) {
   }
 
 }
-
-
-
-
-
-
 ```
-
-
 
 Additional Tweaks for Mobile (need to test on phone)
 
 the tap event in JS
 
 ```js
-$('.image-tn a').on('click tap', function(){
-    var imgsrc = $(this).attr('href');
-    var titleText = $(this).find('img').attr('title');
-    $('.content-slider > img').attr('src',imgsrc);
-    $('.caption').html(titleText);
-    return false;
+$('.image-tn a').on('click tap', function() {
+	var imgsrc = $(this).attr('href');
+	var titleText = $(this)
+		.find('img')
+		.attr('title');
+	$('.content-slider > img').attr('src', imgsrc);
+	$('.caption').html(titleText);
+	return false;
 });
 ```
 
@@ -1171,28 +1136,14 @@ media queries for transform effects (on hover)
 		border-bottom-color: #7c7c7a;
 		width: 100%;
 		height: auto;
-		@media (min-width: $breakpoint-med){
+		@media (min-width: $breakpoint-med) {
 			transition: all 0.2s linear;
 			&:hover {
 				-webkit-transform: scale(1.1);
 				transform: scale(1.1);
-				box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+				box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 			}
 		}
 	}
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
