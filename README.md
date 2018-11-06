@@ -39,26 +39,21 @@ Review:
 * Variables
 * Responsive Nav .scss
 
-Add variables:
-
-```sass
-$radius: 4px;
-$lt-yellow: #f8f7f3;
-```
-
 ## Testing SASS
 
 Review the html structure of the page.
 
 Add responsive code for the main columns.
 
+In the `_structure.scss` file:
+
 ```css
 @media (min-width: $break-sm) {
 	section {
 		max-width: $max-width;
 		margin: 0 auto;
-    padding-bottom: 1.5em;
-    display: flex;
+		padding-bottom: 1.5em;
+		display: flex;
 	}
 	article {
 	 	flex: 0 0 60%;
@@ -68,6 +63,13 @@ Add responsive code for the main columns.
 		flex: 0 0 40%;
 	}
 }
+```
+
+Add variables:
+
+```sass
+$radius: 4px;
+$lt-yellow: #f8f7f3;
 ```
 
 ### Responsive Images
@@ -109,7 +111,7 @@ h4 {
 
 ## Sticky Nav
 
-In `_nav.scss`:
+In `_navigation.scss`:
 
 ```css
 nav {
@@ -126,8 +128,6 @@ header {
 	max-width: $max-width;
 	margin: 0 auto;
 ```
-
-Add black color to the video iframe.
 
 ## CSS Grid Structure
 
@@ -179,9 +179,9 @@ Apply the second breakpoint variable to medium screen sizes and above only:
 ```css
 .secondary {
 	background: $lt-yellow;
-  border: 1px solid $dk-yellow;
-  border-left: none;
-  border-right: none;
+	border: 1px solid $dk-yellow;
+	border-left: none;
+	border-right: none;
 	padding: 1em;
 }
 ```
@@ -256,7 +256,7 @@ section {
 
 header,
 section {
-  padding: 1rem;
+	padding: 1rem;
 }
 ```
 
@@ -319,7 +319,7 @@ footer {
 		grid-template-rows: 3fr 3fr 3fr;
 		margin: 0 auto;
 		color: #fff;
-    padding: 1rem;
+		padding: 1rem;
 		@media (min-width: $break-sm) {
 			grid-template-columns: 6fr 3fr 3fr;
 			grid-column-gap: 4rem;
@@ -346,7 +346,7 @@ footer {
 	min-height: 320px;
 	.siteinfo {
 		display: grid;
-    grid-template-rows: 3fr 3fr 3fr;
+		grid-template-rows: 3fr 3fr 3fr;
 		margin: 0 auto;
 		color: #fff;
 		padding: 1rem;
@@ -355,23 +355,23 @@ footer {
 		}
 		p {
 			margin-top: 0;
-    }
-    ul {
-      grid-row-start: 1;
-    }
-    .vcard {
-      grid-row-start: 2;
-    }
+		}
+		ul {
+			grid-row-start: 1;
+		}
+		.vcard {
+			grid-row-start: 2;
+		}
 		@media (min-width: $break-sm) {
 			grid-template-columns: 6fr 3fr 3fr;
 			grid-column-gap: 4rem;
 			max-width: $max-width;
 		ul {
-      grid-row-start: auto;
-    }
-    .vcard {
-      grid-row-start: auto;
-    }
+			grid-row-start: auto;
+		}
+		.vcard {
+			grid-row-start: auto;
+		}
 		}
 	}
 }
@@ -387,32 +387,32 @@ footer {
 	min-height: 320px;
 	.siteinfo {
 		display: grid;
-    grid-template-rows: 3fr 3fr 3fr;
+		grid-template-rows: 3fr 3fr 3fr;
 		margin: 0 auto;
 		color: #fff;
 		padding: 1rem;
-    a {
+		a {
 			color: #fff;
 		}
 		p {
 			margin-top: 0;
-    }
-    ul {
-      grid-row-start: 1;
-    }
-    .vcard {
-      grid-row-start: 2;
-    }
+		}
+		ul {
+			grid-row-start: 1;
+		}
+		.vcard {
+			grid-row-start: 2;
+		}
 		@media (min-width: $break-sm) {
 			grid-template-columns: 6fr 3fr 3fr;
 			grid-column-gap: 4rem;
 			max-width: $max-width;
-      ul {
-        grid-row-start: auto;
-      }
-      .vcard {
-        grid-row-start: auto;
-      }
+			ul {
+				grid-row-start: auto;
+			}
+			.vcard {
+				grid-row-start: auto;
+			}
 		}
 	}
 }
@@ -426,20 +426,20 @@ Format the video buttons in `_video.scss`:
 
 ```css
 .content-video {
-  background: #222;
-  .btn-list {
-    padding: 6px;
-    display: flex;
-    li {
-      margin: 1rem;
-    }
-    .active {
-      border-radius: $radius;
-      background: $link;
-      color: #fff;
-      padding: 0.5rem;
-    }
-  }
+	background: #222;
+	.btn-list {
+		padding: 6px;
+		display: flex;
+		li {
+			margin: 1rem;
+		}
+		.active {
+			border-radius: $radius;
+			background: $link;
+			color: #fff;
+			padding: 0.5rem;
+		}
+	}
 }
 ```
 
@@ -553,22 +553,22 @@ in `_navsub.scss`:
 
 ```css
 .nav-sub {
-  padding: 10px 20px;
-  background-color: $lt-yellow;
-  border: 1px solid $dk-yellow;
-  border-radius: $radius;
-  ul {
-    display:none;
-  }
-  li:first-child ul {
-    display:block;
-  }
-  > li > a { 
-    font-weight:bold; 
-  }
-  ul li {
-    padding-left:12px;
-  }
+	padding: 10px 20px;
+	background-color: $lt-yellow;
+	border: 1px solid $dk-yellow;
+	border-radius: $radius;
+	ul {
+		display:none;
+	}
+	li:first-child ul {
+		display:block;
+	}
+	> li > a { 
+		font-weight:bold; 
+	}
+	ul li {
+		padding-left:12px;
+	}
 }
 ```
 
@@ -578,7 +578,7 @@ Add class `.active {display: block !important}` to `_nav-sub.scss`:
 
 ```css
 .active {
-  display: block;
+	display: block;
 }
 ```
 
@@ -590,13 +590,13 @@ const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
 subnavLinks.forEach( subnavLink => subnavLink.addEventListener('click', openAccordion))
 
 function openAccordion(){
-  removeActiveClass()
-  this.nextElementSibling.classList.toggle('active')
-  event.preventDefault()
+	removeActiveClass()
+	this.nextElementSibling.classList.toggle('active')
+	event.preventDefault()
 }
 
 function removeActiveClass(){
-    subnavLinks.forEach( subnavLink => subnavLink.nextElementSibling.classList.remove('active'))
+		subnavLinks.forEach( subnavLink => subnavLink.nextElementSibling.classList.remove('active'))
 }
 ```
 
@@ -614,13 +614,13 @@ subnavLinks.forEach( subnavLink => subnavLink.addEventListener('click', openAcco
 subnavLinks[0].nextElementSibling.classList.add('active') // NEW
 
 function openAccordion(){
-  removeActiveClass()
-  this.nextElementSibling.classList.toggle('active')
-  event.preventDefault()
+	removeActiveClass()
+	this.nextElementSibling.classList.toggle('active')
+	event.preventDefault()
 }
 
 function removeActiveClass(){
-    subnavLinks.forEach( subnavLink => subnavLink.nextElementSibling.classList.remove('active'))
+		subnavLinks.forEach( subnavLink => subnavLink.nextElementSibling.classList.remove('active'))
 }
 ```
 
@@ -628,26 +628,26 @@ We can try adding animation to the accordion:
 
 ```css
 .nav-sub {
-  padding: 10px 20px;
-  background-color: $lt-yellow;
-  border: 1px solid $dk-yellow;
-  border-radius: $radius;
-  ul {
-    // display:none;
-    max-height: 0;
-    overflow: hidden;
-    transition: all .3s;
-    &.active {
-      // display: block;
-      max-height: 500px;
-    }
-  }
-  > li > a { 
-    font-weight:bold; 
-  }
-  ul li {
-    padding-left:12px;
-  }
+	padding: 10px 20px;
+	background-color: $lt-yellow;
+	border: 1px solid $dk-yellow;
+	border-radius: $radius;
+	ul {
+		// display:none;
+		max-height: 0;
+		overflow: hidden;
+		transition: all .3s;
+		&.active {
+			// display: block;
+			max-height: 500px;
+		}
+	}
+	> li > a { 
+		font-weight:bold; 
+	}
+	ul li {
+		padding-left:12px;
+	}
 }
 ```
 
@@ -655,28 +655,28 @@ We can even use overflow:
 
 ```css
 .nav-sub {
-  padding: 10px 20px;
-  background-color: $lt-yellow;
-  border: 1px solid $dk-yellow;
-  border-radius: $radius;
-  max-height: 180px; // NEW
-  overflow: scroll; // NEW
-  ul {
-    // display:none;
-    max-height: 0;
-    overflow: hidden;
-    transition: all .3s;
-    &.active {
-      // display: block;
-      max-height: 500px;
-    }
-  }
-  > li > a { 
-    font-weight:bold; 
-  }
-  ul li {
-    padding-left:12px;
-  }
+	padding: 10px 20px;
+	background-color: $lt-yellow;
+	border: 1px solid $dk-yellow;
+	border-radius: $radius;
+	max-height: 180px; // NEW
+	overflow: scroll; // NEW
+	ul {
+		// display:none;
+		max-height: 0;
+		overflow: hidden;
+		transition: all .3s;
+		&.active {
+			// display: block;
+			max-height: 500px;
+		}
+	}
+	> li > a { 
+		font-weight:bold; 
+	}
+	ul li {
+		padding-left:12px;
+	}
 }
 ```
 
@@ -693,52 +693,52 @@ var body = document.querySelector('body');
 hamburger.addEventListener('click', showMenu)
 
 function showMenu() {
-  body.classList.toggle('show-nav');
-  event.preventDefault();
+	body.classList.toggle('show-nav');
+	event.preventDefault();
 }
 
 // Functions called elsewhere
 var removeActiveClass = function (elements) {
-  document.querySelectorAll(elements).forEach( (elem) => {
-    elem.classList.remove('active')
-  })
+	document.querySelectorAll(elements).forEach( (elem) => {
+		elem.classList.remove('active')
+	})
 }
 
 var addActiveClass = function (element) {
-  element.classList.add('active')
+	element.classList.add('active')
 }
 
 // Video switcher
 var videoSwitcher = function () {
-  const videoLinks = Array.from(document.querySelectorAll('.content-video a'));
-  const iFrame = document.querySelector('iframe')
-  
-  videoLinks.forEach((videoLink) => {
-    videoLink.addEventListener('click', selectVideo)
-  });
-    
-  function selectVideo() {
-    removeActiveClass('.content-video a');
-    addActiveClass(event.target)
-    const videoToPlay = event.target.getAttribute('href');
-    iFrame.setAttribute('src', videoToPlay);
-    event.preventDefault();
-  }
+	const videoLinks = Array.from(document.querySelectorAll('.content-video a'));
+	const iFrame = document.querySelector('iframe')
+	
+	videoLinks.forEach((videoLink) => {
+		videoLink.addEventListener('click', selectVideo)
+	});
+		
+	function selectVideo() {
+		removeActiveClass('.content-video a');
+		addActiveClass(event.target)
+		const videoToPlay = event.target.getAttribute('href');
+		iFrame.setAttribute('src', videoToPlay);
+		event.preventDefault();
+	}
 }
-  
-  
+	
+	
 // Accordion
 var accordion = function () {
-  const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
-  subnavLinks[0].nextElementSibling.classList.add('active')
-  
-  subnavLinks.forEach(subnavLink => subnavLink.addEventListener('click', openAccordion))
-  
-  function openAccordion() {
-    removeActiveClass('.nav-sub > li > ul');
-    addActiveClass(event.target.nextElementSibling)
-    event.preventDefault()
-  }
+	const subnavLinks = document.querySelectorAll('.nav-sub > li > a')
+	subnavLinks[0].nextElementSibling.classList.add('active')
+	
+	subnavLinks.forEach(subnavLink => subnavLink.addEventListener('click', openAccordion))
+	
+	function openAccordion() {
+		removeActiveClass('.nav-sub > li > ul');
+		addActiveClass(event.target.nextElementSibling)
+		event.preventDefault()
+	}
 }
 
 accordion();
@@ -753,23 +753,23 @@ In `_carousel.scss`:
 
 ```css
 .secondary aside {
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
-    li {
-      flex-basis: 22%;
-      margin: 2px;
-      padding: 10px;
-      background-color: #fff;
-      border: 1px solid $dk-yellow;
-      transition: all 0.2s linear;
-      &:hover {
-        transform: scale(1.1);
-        box-shadow: 1px 1px 1px rgba(0,0,0,0.4);
-      }
-    }
-  }
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		align-content: space-around;
+		li {
+			flex-basis: 22%;
+			margin: 2px;
+			padding: 10px;
+			background-color: #fff;
+			border: 1px solid $dk-yellow;
+			transition: all 0.2s linear;
+			&:hover {
+				transform: scale(1.1);
+				box-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+			}
+		}
+	}
 }
 ```
 
@@ -807,15 +807,15 @@ Change the # links to point to high res images (first three only in this sample)
 
 ```html
 <ul class="image-tn">
-  <li>
-    <a href="img/bamboo.jpg"><img src="img/bamboo-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
-  </li>
-  <li>
-    <a href="img/bridge.jpg"><img src="img/bridge-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
-  </li>
-  <li>
-    <a href="img/pagoda.jpg"><img src="img/pagoda-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
-  </li>
+	<li>
+		<a href="img/bamboo.jpg"><img src="img/bamboo-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
+	</li>
+	<li>
+		<a href="img/bridge.jpg"><img src="img/bridge-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
+	</li>
+	<li>
+		<a href="img/pagoda.jpg"><img src="img/pagoda-tn.jpg" alt="" title="Link to original photo on Flickr" /></a>
+	</li>
 ```
 
 Change the title text as well.
@@ -889,11 +889,11 @@ Note the separation of thumbnails and figure in small screen view.
 
 ```css
 .secondary article {
-    display: flex;
-    flex-direction: column;
-    figure {
-        order: 2;
-    }
+		display: flex;
+		flex-direction: column;
+		figure {
+				order: 2;
+		}
 }
 ```
 
@@ -901,14 +901,14 @@ Correct wide screen view:
 
 ```js
 .secondary article {
-    display: flex;
-    flex-direction: column;
-    figure {
-        order: 2;
-        @media(min-width: $break-med){
-            order: 0;
-        }
-    }
+		display: flex;
+		flex-direction: column;
+		figure {
+				order: 2;
+				@media(min-width: $break-med){
+						order: 0;
+				}
+		}
 }
 ```
 
@@ -1076,58 +1076,58 @@ a[rel='alternate'] {
 
 ```css
 nav {
-  ul {
-    // display: none;
-    transform: translateY(-500px);
-    max-height: 1px;
-    opacity: 0;
-    transition: transform max-height .1s linear; // NEW
-    transition: opacity 0.25s linear; // NEW
+	ul {
+		// display: none;
+		transform: translateY(-500px);
+		max-height: 1px;
+		opacity: 0;
+		transition: transform max-height .1s linear; // NEW
+		transition: opacity 0.25s linear; // NEW
 
-    position: absolute; // NEW
-    width: 100%; // NEW
+		position: absolute; // NEW
+		width: 100%; // NEW
 
-    @media (min-width: $break-sm){
-      display: flex;
-      justify-content: space-around;
-      background: $link;
-      text-align: center;
+		@media (min-width: $break-sm){
+			display: flex;
+			justify-content: space-around;
+			background: $link;
+			text-align: center;
 
-      transform: translateY(0);
+			transform: translateY(0);
 			max-height: 1000px;
-      opacity: 1;
-      position: relative;
-    }
+			opacity: 1;
+			position: relative;
+		}
 	}
 	```
 
 ```js
 {
-  "name": "session7",
-  "version": "1.0.0",
-  "description": "## Homework",
-  "main": "index.js",
-  "scripts": {
-    "sassy": "node-sass --watch sass --output app/css --source-map true",
-    "start": "browser-sync start --server 'app' --files 'app'",
-    "boom!": "concurrently \"npm run start\" \"npm run sassy\" "
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/front-end-foundations/session7.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/front-end-foundations/session7/issues"
-  },
-  "homepage": "https://github.com/front-end-foundations/session7#readme",
-  "devDependencies": {
-    "browser-sync": "^2.18.13",
-    "concurrently": "^3.5.0",
-    "node-sass": "^4.6.0"
-  }
+	"name": "session7",
+	"version": "1.0.0",
+	"description": "## Homework",
+	"main": "index.js",
+	"scripts": {
+		"sassy": "node-sass --watch sass --output app/css --source-map true",
+		"start": "browser-sync start --server 'app' --files 'app'",
+		"boom!": "concurrently \"npm run start\" \"npm run sassy\" "
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/front-end-foundations/session7.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/front-end-foundations/session7/issues"
+	},
+	"homepage": "https://github.com/front-end-foundations/session7#readme",
+	"devDependencies": {
+		"browser-sync": "^2.18.13",
+		"concurrently": "^3.5.0",
+		"node-sass": "^4.6.0"
+	}
 }
 ```
 
@@ -1139,7 +1139,7 @@ nav {
 
 ```
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 ```
 
@@ -1149,133 +1149,133 @@ https://www.sitepoint.com/smooth-scrolling-vanilla-javascript/
 initSmoothScrolling();
 
 function initSmoothScrolling() {
-  if (isCssSmoothSCrollSupported()) {
-    return;
-  }
+	if (isCssSmoothSCrollSupported()) {
+		return;
+	}
 
-  var duration = 400;
+	var duration = 400;
 
-  var pageUrl = location.hash ?
-    stripHash(location.href) :
-    location.href;
+	var pageUrl = location.hash ?
+		stripHash(location.href) :
+		location.href;
 
-  delegatedLinkHijacking();
-  //directLinkHijacking();
+	delegatedLinkHijacking();
+	//directLinkHijacking();
 
-  function delegatedLinkHijacking() {
-    document.body.addEventListener('click', onClick, false);
+	function delegatedLinkHijacking() {
+		document.body.addEventListener('click', onClick, false);
 
-    function onClick(e) {
-      if (!isInPageLink(e.target))
-        return;
+		function onClick(e) {
+			if (!isInPageLink(e.target))
+				return;
 
-      e.stopPropagation();
-      e.preventDefault();
+			e.stopPropagation();
+			e.preventDefault();
 
-      jump(e.target.hash, {
-        duration: duration,
-        callback: function() {
-          setFocus(e.target.hash);
-        }
-      });
-    }
-  }
+			jump(e.target.hash, {
+				duration: duration,
+				callback: function() {
+					setFocus(e.target.hash);
+				}
+			});
+		}
+	}
 
-  function directLinkHijacking() {
-    [].slice.call(document.querySelectorAll('a'))
-      .filter(isInPageLink)
-      .forEach(function(a) {
-        a.addEventListener('click', onClick, false);
-      });
+	function directLinkHijacking() {
+		[].slice.call(document.querySelectorAll('a'))
+			.filter(isInPageLink)
+			.forEach(function(a) {
+				a.addEventListener('click', onClick, false);
+			});
 
-    function onClick(e) {
-      e.stopPropagation();
-      e.preventDefault();
+		function onClick(e) {
+			e.stopPropagation();
+			e.preventDefault();
 
-      jump(e.target.hash, {
-        duration: duration,
-      });
-    }
+			jump(e.target.hash, {
+				duration: duration,
+			});
+		}
 
-  }
+	}
 
-  function isInPageLink(n) {
-    return n.tagName.toLowerCase() === 'a' &&
-      n.hash.length > 0 &&
-      stripHash(n.href) === pageUrl;
-  }
+	function isInPageLink(n) {
+		return n.tagName.toLowerCase() === 'a' &&
+			n.hash.length > 0 &&
+			stripHash(n.href) === pageUrl;
+	}
 
-  function stripHash(url) {
-    return url.slice(0, url.lastIndexOf('#'));
-  }
+	function stripHash(url) {
+		return url.slice(0, url.lastIndexOf('#'));
+	}
 
-  function isCssSmoothSCrollSupported() {
-    return 'scrollBehavior' in document.documentElement.style;
-  }
+	function isCssSmoothSCrollSupported() {
+		return 'scrollBehavior' in document.documentElement.style;
+	}
 
-  // Adapted from:
-  // https://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/
-  function setFocus(hash) {
-    var element = document.getElementById(hash.substring(1));
+	// Adapted from:
+	// https://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/
+	function setFocus(hash) {
+		var element = document.getElementById(hash.substring(1));
 
-    if (element) {
-      if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
-        element.tabIndex = -1;
-      }
+		if (element) {
+			if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
+				element.tabIndex = -1;
+			}
 
-      element.focus();
-    }
-  }
+			element.focus();
+		}
+	}
 
 }
 
 function jump(target, options) {
-  var
-    start = window.pageYOffset,
-    opt = {
-      duration: options.duration,
-      offset: options.offset || 0,
-      callback: options.callback,
-      easing: options.easing || easeInOutQuad
-    },
-    distance = typeof target === 'string' ?
-    opt.offset + document.querySelector(target).getBoundingClientRect().top :
-    target,
-    duration = typeof opt.duration === 'function' ?
-    opt.duration(distance) :
-    opt.duration,
-    timeStart, timeElapsed;
+	var
+		start = window.pageYOffset,
+		opt = {
+			duration: options.duration,
+			offset: options.offset || 0,
+			callback: options.callback,
+			easing: options.easing || easeInOutQuad
+		},
+		distance = typeof target === 'string' ?
+		opt.offset + document.querySelector(target).getBoundingClientRect().top :
+		target,
+		duration = typeof opt.duration === 'function' ?
+		opt.duration(distance) :
+		opt.duration,
+		timeStart, timeElapsed;
 
-  requestAnimationFrame(function(time) {
-    timeStart = time;
-    loop(time);
-  });
+	requestAnimationFrame(function(time) {
+		timeStart = time;
+		loop(time);
+	});
 
-  function loop(time) {
-    timeElapsed = time - timeStart;
+	function loop(time) {
+		timeElapsed = time - timeStart;
 
-    window.scrollTo(0, opt.easing(timeElapsed, start, distance, duration));
+		window.scrollTo(0, opt.easing(timeElapsed, start, distance, duration));
 
-    if (timeElapsed < duration)
-      requestAnimationFrame(loop)
-    else
-      end();
-  }
+		if (timeElapsed < duration)
+			requestAnimationFrame(loop)
+		else
+			end();
+	}
 
-  function end() {
-    window.scrollTo(0, start + distance);
+	function end() {
+		window.scrollTo(0, start + distance);
 
-    if (typeof opt.callback === 'function')
-      opt.callback();
-  }
+		if (typeof opt.callback === 'function')
+			opt.callback();
+	}
 
-  // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
-  function easeInOutQuad(t, b, c, d) {
-    t /= d / 2
-    if (t < 1) return c / 2 * t * t + b
-    t--
-    return -c / 2 * (t * (t - 2) - 1) + b
-  }
+	// Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
+	function easeInOutQuad(t, b, c, d) {
+		t /= d / 2
+		if (t < 1) return c / 2 * t * t + b
+		t--
+		return -c / 2 * (t * (t - 2) - 1) + b
+	}
 
 }
 ```
