@@ -10,15 +10,15 @@ Making the page "mobile friendly" is required as is at least one instance of DOM
 
 Top of the page
 
-![image](/img/wide.png)
+![image](/other/img/wide.png)
 
 Mobile view
 
-![image](/img/mobile.png)
+![image](/other/img/mobile.png)
 
 Full page
 
-![image](/img/siteDesign.png)
+![image](/other/img/siteDesign.png)
 
 Review the structure of the page using the mini version.
 
