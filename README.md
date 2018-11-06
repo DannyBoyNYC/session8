@@ -10,37 +10,17 @@ Making the page "mobile friendly" is required as is at least one instance of DOM
 
 [Pick up where we left off ](https://github.com/front-end-foundations/session7#columns-for-content)
 
-Top of the page
+### Top of the page
 
 ![image](/other/img/wide.png)
 
-Mobile view
+### Mobile view
 
 ![image](/other/img/mobile.png)
 
-Full page
+### Full page
 
 ![image](/other/img/siteDesign.png)
-
-Add responsive code for the main columns.
-
-```css
-@media (min-width: $break-sm) {
-	section {
-		max-width: $max-width;
-		margin: 0 auto;
-    padding-bottom: 1.5em;
-    display: flex;
-	}
-	article {
-	 	flex: 0 0 60%;
-		padding-right: 24px;
-	}
-	aside {
-		flex: 0 0 40%;
-	}
-}
-```
 
 ## Tooling
 
@@ -64,6 +44,30 @@ Add variables:
 ```sass
 $radius: 4px;
 $lt-yellow: #f8f7f3;
+```
+
+## Testing SASS
+
+Review the html structure of the page.
+
+Add responsive code for the main columns.
+
+```css
+@media (min-width: $break-sm) {
+	section {
+		max-width: $max-width;
+		margin: 0 auto;
+    padding-bottom: 1.5em;
+    display: flex;
+	}
+	article {
+	 	flex: 0 0 60%;
+		padding-right: 24px;
+	}
+	aside {
+		flex: 0 0 40%;
+	}
+}
 ```
 
 ### Responsive Images
@@ -125,9 +129,8 @@ header {
 
 Add black color to the video iframe.
 
-## Columns for Content
+## CSS Grid Structure
 
-Review the html structure of the page.
 
 <!-- In a new `_structure.scss` file:
 
@@ -171,7 +174,7 @@ Apply the second breakpoint variable to medium screen sizes and above only:
 }
 ``` -->
 
-The Secondary div:
+<!-- The Secondary div:
 
 ```css
 .secondary {
@@ -207,7 +210,7 @@ If you use this approach it is best to define a cf class and use it as necessary
 .clearfix:after {
 	clear: both;
 }
-```
+``` -->
 
 <!-- Add the clearfix to the section and secondary div:
 
@@ -239,8 +242,6 @@ If you use this approach it is best to define a cf class and use it as necessary
 	padding: 1em;
 }
 ``` -->
-
-### CSS Grid
 
 Delete/comment everything from `_structure.scss` except the `.secondary` rule.
 
