@@ -8,7 +8,7 @@ It is not required that you prepare a specific number of pages. Depending on the
 
 Making the page "mobile friendly" is required as is at least one instance of DOM scripting.
 
-[Pick up whee we left off ](https://github.com/front-end-foundations/session7#columns-for-content)
+[Pick up where we left off ](https://github.com/front-end-foundations/session7#columns-for-content)
 
 Top of the page
 
