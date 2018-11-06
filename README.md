@@ -684,19 +684,11 @@ We can even use overflow:
 
 `removeActiveClass` appears twice and the video switcher is broken. Let's unify this and organize our code a bit.
 
+1. Use IIFEs or function expressions for the blocks of code.
+1. Call the functions
+1. Break out common functionality into separate functions
+
 ```js
-// Hamburger
-
-var hamburger = document.querySelector('#pull');
-var body = document.querySelector('body');
-
-hamburger.addEventListener('click', showMenu)
-
-function showMenu() {
-	body.classList.toggle('show-nav');
-	event.preventDefault();
-}
-
 // Functions called elsewhere
 var removeActiveClass = function (elements) {
 	document.querySelectorAll(elements).forEach( (elem) => {
@@ -707,6 +699,22 @@ var removeActiveClass = function (elements) {
 var addActiveClass = function (element) {
 	element.classList.add('active')
 }
+
+// --- DOM Scripts ---- //
+
+// Hamburger
+var makeHamburgers = function () {
+	var hamburger = document.querySelector('#pull');
+	var body = document.querySelector('body');
+
+	hamburger.addEventListener('click', showMenu)
+
+	function showMenu() {
+		body.classList.toggle('show-nav');
+		event.preventDefault();
+	}
+}
+
 
 // Video switcher
 var videoSwitcher = function () {
@@ -741,6 +749,9 @@ var accordion = function () {
 	}
 }
 
+// ---- Initialization ---- //
+
+makeHamburgers();
 accordion();
 videoSwitcher();
 ```
