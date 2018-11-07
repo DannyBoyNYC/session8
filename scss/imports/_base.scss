@@ -15,3 +15,27 @@ a:hover {
 }
 
 ::selection { background:#4e7c92; color:#fff; }
+
+img,
+iframe {
+	width: 100%;
+	height: auto;
+}
+
+p {
+	margin: 12px 0;
+}
+
+h2 {
+	margin-bottom: 12px;
+	padding-bottom: 6px;
+	font-size: 24px;
+	letter-spacing: -1px;
+}
+
+h3,
+h4 {
+	font-size: 16px;
+	line-height: 1.25;
+	margin-bottom: 20px;
+}
